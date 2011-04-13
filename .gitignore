@@ -1,0 +1,25 @@
+
+# SVN directory
+.svn
+
+# Output directories
+debug
+release
+
+# Dependices 
+lua
+SFML-1.6
+
+# Game projects
+man20s
+paul
+
+# Miscs directories
+docs
+
+# VisualStudio files
+*.sln
+*.ncb
+*.suo
+*.vcproj
+*.user
