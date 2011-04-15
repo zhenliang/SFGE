@@ -8,7 +8,8 @@ Features:
 	- Simple resources manager
 	- Simple GUI module
 	- Simple lua binding
-	- Simple engien util module
+        - Simple game framework
+	- Simple engine util module
 	- Simple C++ common util module
 
 More in future:
