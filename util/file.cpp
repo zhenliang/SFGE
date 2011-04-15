@@ -13,4 +13,12 @@ namespace util
         ofs << ifs.rdbuf();
         std::cout<<"ok backup "<<source<<std::endl;
     }
+
+    void CopyFile_(const std::string& source, const std::string& destination)
+    {
+        std::ifstream ifs(source.c_str(), std::fstream::binary | std::fstream::in);
+        std::ofstream ofs(destination.c_str(), std::fstream::binary | std::fstream::out);
+        ofs << ifs.rdbuf();
+        std::cout<< "ok copy "<<source<<std::endl;
+    }
 }
