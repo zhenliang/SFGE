@@ -33,13 +33,19 @@ namespace util
 	UTIL_API double GetField_Number(lua_State* L, int index, int key);
 	UTIL_API double GetField_Number(lua_State* L, const std::string& key);
 	UTIL_API double GetField_Number(lua_State* L, int index, const std::string& key);
-    UTIL_API double SafeGetField_Number(lua_State* L, int key); // 未实现
-    UTIL_API double SafeGetField_Number(lua_State* L, int index, int key); // 未实现
+    UTIL_API double SafeGetField_Number(lua_State* L, int key);
+    UTIL_API double SafeGetField_Number(lua_State* L, int index, int key); 
     UTIL_API double SafeGetField_Number(lua_State* L, const std::string& key);
     UTIL_API double SafeGetField_Number(lua_State* L, int index, const std::string& key);
 
+    UTIL_API std::string GetField_String(lua_State* L, int key);
+    UTIL_API std::string GetField_String(lua_State* L, int index, int key);
     UTIL_API std::string GetField_String(lua_State* L, const std::string& key);
     UTIL_API std::string GetField_String(lua_State* L, int index, const std::string& key);
+    UTIL_API std::string SafeGetField_String(lua_State* L, int key);
+    UTIL_API std::string SafeGetField_String(lua_State* L, int index, int key);
+    UTIL_API std::string SafeGetField_String(lua_State* L, const std::string& key);
+    UTIL_API std::string SafeGetField_String(lua_State* L, int index, const std::string& key);
 
 	// 为什么返回 void* 时导出函数指示器要在 void* 前面才能编译通过？
 

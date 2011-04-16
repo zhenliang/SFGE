@@ -77,11 +77,6 @@ namespace util
         return GetField_Boolean(L, -1, key);
     }
 
-    bool SafeGetField_Boolean(lua_State* L, int key)
-    {
-        return SafeGetField_Boolean(L, key);
-    }
-
     bool GetField_Boolean(lua_State* L, int index, int key)
     {
         int tableIndex = ToPositiveIndex(L, index);
@@ -105,6 +100,39 @@ namespace util
         return result;	
     }
 
+    // 获取栈顶的表的 key 的值
+
+    bool GetField_Boolean(lua_State* L, const std::string& key)
+    {
+        return GetField_Boolean(L, -1, key);
+    }
+
+    bool GetField_Boolean( lua_State* L, int index, const std::string& key )
+    {
+        int tableIndex = ToPositiveIndex(L, index);
+        assert(lua_istable(L, tableIndex));
+
+        // 获取结果
+        lua_pushstring(L, key.c_str());
+        lua_gettable(L, tableIndex);
+
+        bool result = false;
+        if (lua_isboolean(L, -1))
+            result = (lua_toboolean(L, -1) != 0);
+        else if (lua_isnumber(L, -1))
+            result = (lua_tonumber(L, -1) != 0.);
+
+        // 结果出栈，还原栈
+        lua_pop(L, 1);
+
+        return result;
+    }
+
+    bool SafeGetField_Boolean(lua_State* L, int key)
+    {
+        return SafeGetField_Boolean(L, key);
+    }
+
     bool SafeGetField_Boolean(lua_State* L, int index, int key)
     {
         if (HasField(L, index, key))
@@ -113,38 +141,10 @@ namespace util
         return false;
     }
 
-    // 获取栈顶的表的 key 的值
-
-	bool GetField_Boolean(lua_State* L, const std::string& key)
-	{
-		return GetField_Boolean(L, -1, key);
-	}
-
     bool SafeGetField_Boolean(lua_State* L, const std::string& key)
     {
         return SafeGetField_Boolean(L, -1, key);
     }
-
-	bool GetField_Boolean( lua_State* L, int index, const std::string& key )
-	{
-		int tableIndex = ToPositiveIndex(L, index);
-		assert(lua_istable(L, tableIndex));
-
-		// 获取结果
-		lua_pushstring(L, key.c_str());
-		lua_gettable(L, tableIndex);
-
-		bool result = false;
-		if (lua_isboolean(L, -1))
-			result = (lua_toboolean(L, -1) != 0);
-        else if (lua_isnumber(L, -1))
-            result = (lua_tonumber(L, -1) != 0.);
-
-		// 结果出栈，还原栈
-		lua_pop(L, 1);
-
-		return result;
-	}
 
     bool SafeGetField_Boolean( lua_State* L, int index, const std::string& key )
     {
@@ -241,36 +241,49 @@ namespace util
 		return GetField_Number(L, -1, key);
 	}
 
+    double GetField_Number(lua_State* L, int index, const std::string& key )
+    {
+        int tableIndex = ToPositiveIndex(L, index);
+        assert(lua_istable(L, tableIndex));
+
+        // 获取结果
+        lua_pushstring(L, key.c_str());
+        lua_gettable(L, tableIndex);
+
+        double result = 0.0;
+        if (lua_isnumber(L, -1))
+            result = lua_tonumber(L, -1);
+
+        // 结果出栈，还原栈
+        lua_pop(L, 1);
+
+        return result;	
+    }
+
     double SafeGetField_Number(lua_State* L, const std::string& key)
     {
         return SafeGetField_Number(L, -1, key);
     }
-
-	double GetField_Number(lua_State* L, int index, const std::string& key )
-	{
-		int tableIndex = ToPositiveIndex(L, index);
-		assert(lua_istable(L, tableIndex));
-
-		// 获取结果
-		lua_pushstring(L, key.c_str());
-		lua_gettable(L, tableIndex);
-
-		double result = 0.0;
-		if (lua_isnumber(L, -1))
-			result = lua_tonumber(L, -1);
-
-		// 结果出栈，还原栈
-		lua_pop(L, 1);
-
-		return result;	
-	}
 
     double SafeGetField_Number(lua_State* L, int index, const std::string& key )
     {
         if (HasField(L, index, key))
             return GetField_Number(L, index, key);
         assert(false);
-        return 0.0;
+        return double();
+    }
+
+    UTIL_API double SafeGetField_Number(lua_State* L, int key)
+    {
+        return SafeGetField_Number(L, -1, key);
+    }
+
+    UTIL_API double SafeGetField_Number(lua_State* L, int index, int key)
+    {
+        if (HasField(L, index, key))
+            return GetField_Number(L, index, key);
+        assert(false);
+        return double();
     }
 
     // 获取栈顶的表的 key 的值
@@ -298,6 +311,32 @@ namespace util
 
 		return result;
 	}
+
+    UTIL_API std::string GetField_String(lua_State* L, int key)
+    {
+        return GetField_String(L, -1, key);
+    }
+
+    UTIL_API std::string GetField_String(lua_State* L, int index, int key)
+    {
+        int tableIndex = ToPositiveIndex(L, index);
+        assert(lua_istable(L, tableIndex));
+
+        // 获取结果
+
+        lua_pushinteger(L, key);
+        lua_gettable(L, tableIndex);
+
+        std::string result = false;
+        if (lua_isstring(L, -1))
+            result = lua_tostring(L, -1);
+
+        // 结果出栈，还原栈
+
+        lua_pop(L, 1);
+
+        return result;	
+    }
 
     // 获取栈顶的表的 key 的值
 
@@ -350,4 +389,31 @@ namespace util
 
 		return result;
 	}
+
+    UTIL_API std::string SafeGetField_String(lua_State* L, const std::string& key)
+    {
+        return SafeGetField_String(L, -1, key);
+    }
+
+    UTIL_API std::string SafeGetField_String(lua_State* L, int index, const std::string& key)
+    {
+        if (HasField(L, index, key))
+            return GetField_String(L, index, key);
+        assert(false);
+        return std::string();
+    }
+
+    UTIL_API std::string SafeGetField_String(lua_State* L, int key)
+    {
+        return SafeGetField_String(L, -1, key);
+    }
+
+    UTIL_API std::string SafeGetField_String(lua_State* L, int index, int key)
+    {
+        if (HasField(L, index, key))
+            return GetField_String(L, index, key);
+        assert(false);
+        return std::string();
+    }
+
 }
