@@ -19,65 +19,71 @@ UIProgressbar::UIProgressbar()
 
 void UIProgressbar::Update(float delta)
 {
-    __super::Update(delta);
+  if (!visibled_)
+    return;
 
-    UTIL_FOREACH(i, anims_, Anims)
-        i->second.Update(delta);
+  __super::Update(delta);
+
+  UTIL_FOREACH(i, anims_, Anims)
+    i->second.Update(delta);
 }
 
 void UIProgressbar::Render(RenderTarget& target) const
 {
-    UTIL_FOREACH(i, anims_, Anims)
-        target.Draw(i->second);
+  if (!visibled_)
+    return;
 
-    __super::Render(target);
+  UTIL_FOREACH(i, anims_, Anims)
+    target.Draw(i->second);
+
+  __super::Render(target);
 }
 
 void UIProgressbar::PostSetTopLeft()
 {
-    __super::PostSetTopLeft();
-    if (hasMidAnim_)
-        anims_[MID_ANIM_].SetX(GetLeft());
+  __super::PostSetTopLeft();
+  if (hasMidAnim_)
+    anims_[MID_ANIM_].SetX(GetLeft());
 }
 
 void UIProgressbar::PostSetWidthHeight()
 {
-    __super::PostSetWidthHeight();
-    UpdateMidAnim();
+  __super::PostSetWidthHeight();
+  UpdateMidAnim();
 }
 
 void UIProgressbar::PostSetAnim(const std::string name, Animation& anim)
 {
-    __super::PostSetAnim(name, anim);
+  __super::PostSetAnim(name, anim);
 
-    if (name == MID_ANIM_)
-    {
-        hasMidAnim_ = true;
-        UpdateMidAnim();
-        SetCenter(anims_[MID_ANIM_], 0.f, 0.5f);
-        anims_[MID_ANIM_].SetX(GetLeft());
-    }
+  if (name == MID_ANIM_)
+  {
+    hasMidAnim_ = true;
+    UpdateMidAnim();
+    SetCenter(anims_[MID_ANIM_], 0.f, 0.5f);
+    anims_[MID_ANIM_].SetX(GetLeft());
+  }
 }
 
 void UIProgressbar::UpdateMidAnim()
 {
-    if (!hasMidAnim_)
-        return;
+  if (!hasMidAnim_)
+    return;
 
-    Vector2f size = GetWidthHeight();
-    size.x *= curValue_ / maxValue_;
-    size.x = util::ClamUp(size.x, 1.f); // 下限 1 像素，size.x <= 0 则在 SFML 内部不作处理
-    anims_[MID_ANIM_].Resize(size);
+  Vector2f size = GetWidthHeight();
+  size.x *= curValue_ / maxValue_;
+  size.x = util::ClamUp(size.x, 1.f); // 下限 1 像素，size.x <= 0 则在 SFML 内部不作处理
+  anims_[MID_ANIM_].Resize(size);
 }
 
 void UIProgressbar::SetMaxValue(float val)
 {
-    maxValue_ = val;
-    UpdateMidAnim();
+  maxValue_ = val;
+  UpdateMidAnim();
 }
 
 void UIProgressbar::SetCurValue(float val)
 {
-    curValue_ = val;
-    UpdateMidAnim();
+  curValue_ = val;
+  UpdateMidAnim();
 }
