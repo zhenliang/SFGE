@@ -18,7 +18,7 @@
 // int main()
 // {
 //   int* num = new int;
-//   _CrtDumpMemoryLeaks()
+//   _CrtDumpMemoryLeaks();
 // }
 
 // link: http://msdn.microsoft.com/en-us/library/e5ewb1h3(v=VS.80)
