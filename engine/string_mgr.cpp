@@ -5,53 +5,52 @@
 #include <util\container.h>
 #include <util\string.h>
 
-bool StringManager::AddString( std::string key, std::wstring value,
-							   const Font& font /*= Font::GetDefaultFont()*/, float size /*= 30.0f*/ )
+bool StringManager::AddString(const std::string& key, const std::wstring& value,
+							   const Font& font /*= Font::GetDefaultFont()*/, float size /*= 30.0f*/)
 {
 	return AddString(key, String(value, font, size));
 }
 
-bool StringManager::AddString( std::string key, String value )
+bool StringManager::AddString(const std::string& key, const String& value)
 {
 	return util::Insert(strings_, Strings::value_type(key, value));
 }
 
-bool StringManager::AddStrings( std::string file )
+bool StringManager::AddStrings(const std::string& path)
 {
-	if (!file.empty())
+	if (!path.empty())
 	{
-		const size_t ID_LENGHT = 32;
-		const size_t TEXT_LENGHT = 1024;
+		const size_t MAX_KEY_LENGHT = 32;
+		const size_t MAX_VAL_LENGHT = 1024;
 
-		char id[ID_LENGHT + 1] = {};
-		char text[TEXT_LENGHT + 1] = {};
+		char key[MAX_KEY_LENGHT + 1] = {};
+		char val[MAX_VAL_LENGHT + 1] = {};
 
-		std::ifstream ifstream(file.c_str());
+		std::ifstream ifstream(path.c_str());
 		if (ifstream.is_open())
 		{
-			std::cout<<file<<" :"<<std::endl;
+			std::cout<<path<<" :"<<std::endl;
 
-			while (ifstream.get(id, ID_LENGHT, ' '))
+			while (ifstream.get(key, MAX_KEY_LENGHT, ' '))
 			{
 				ifstream.ignore();
-				ifstream.getline(text, TEXT_LENGHT, '\n');
+				ifstream.getline(val, MAX_VAL_LENGHT, '\n');
 
-				std::wstring wtext = util::S2WS(text);
-				AddString(id, wtext);
+				std::wstring wval = util::S2WS(val);
+				AddString(key, wval);
 
-				std::cout<<id<<std::ends;
-				std::cout<<text<<std::endl;
+				std::cout<<key<<std::ends;
+				std::cout<<val<<std::endl;
 			}
 		}
 		else
-			std::cout<<"Cant not opened file: "<<file<<std::endl;
-
+			std::cout<<"Cant not opened file: "<<path<<std::endl;
 	}
 
 	return true;
 }
 
-String& StringManager::GetString( std::string key )
+String& StringManager::GetString(const std::string& key)
 {
 	return util::Get(strings_, key);
 }

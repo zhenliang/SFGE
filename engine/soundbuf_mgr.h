@@ -7,13 +7,13 @@
 class ENGINE_API SoundbufManager : public util::IGetInstance<SoundbufManager>
 {
 public:
-	SoundbufManager() {}
-	virtual ~SoundbufManager() {}
+  SoundbufManager() {}
+  virtual ~SoundbufManager() {}
 
-	bool LoadSoundbuf(std::string file, std::string key);
-	SoundBuffer& GetSoundbuf(std::string key);
+  bool LoadSoundbuf(std::string path, std::string key);
+  SoundBuffer& GetSoundbuf(std::string key);
 
 private:
-	typedef std::map<std::string, SoundBuffer> Soundbufs;
-	Soundbufs soundbufs_;
+  typedef std::map<std::string, SoundBuffer> Soundbufs;
+  Soundbufs soundbufs_;
 };

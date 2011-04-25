@@ -9,14 +9,14 @@
 class ENGINE_API CharsetManager : public util::IGetInstance<CharsetManager>
 {
 public:
-	CharsetManager() {}
-	virtual ~CharsetManager() {}
+  CharsetManager() {}
+  virtual ~CharsetManager() {}
 
-	bool AddCharset(const std::string& key, const std::string& charset);
-	bool LoadCharset(const std::string& key, const std::string& file);
-	const Unicode::Text& GetCharset(std::string key);
+  bool AddCharset(const std::string& key, const std::string& charset);
+  bool AddCharsetFromFile(const std::string& key, const std::string& path);
+  const Unicode::Text& GetCharset(const std::string& key);
 
 private:
-	typedef std::map<std::string, Unicode::Text> Charsets;
-	Charsets charsets_;
+  typedef std::map<std::string, Unicode::Text> Charsets;
+  Charsets charsets_;
 };

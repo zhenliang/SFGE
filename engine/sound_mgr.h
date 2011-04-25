@@ -9,20 +9,20 @@
 class ENGINE_API SoundManager : public util::IGetInstance<SoundManager>
 {
 public:
-    typedef std::map<std::string, std::string> BufMap;
-    typedef std::list< std::pair<std::string, Sound> > Sounds;
+  typedef std::map<std::string, std::string> BufMap;
+  typedef std::list< std::pair<std::string, Sound> > Sounds;
 
 public:
-    SoundManager() {}
-    virtual ~SoundManager() {}
+  SoundManager() {}
+  virtual ~SoundManager() {}
 
-    bool RegisterSound(const std::string& soundKey, const std::string& soundbufKey);
-    void PlaySound(const std::string& soundKey, bool loop = false, float pitch = 1.f, 
-        float volume = 100.f, const Vector3f& position = Vector3f(0, 0, 0));
+  bool RegisterSound(const std::string& soundKey, const std::string& bufKey);
+  void PlaySound(const std::string& soundKey, bool loop = false, float pitch = 1.f, 
+    float volume = 100.f, const Vector3f& position = Vector3f(0., 0., 0.));
 
-    void EraseStoppedSounds();
+  void EraseStoppedSounds();
 
 private:
-    BufMap bufMap_;
-    Sounds sounds_;
+  BufMap bufMap_;
+  Sounds sounds_;
 };

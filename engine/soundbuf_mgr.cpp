@@ -2,20 +2,20 @@
 
 #include <util\container.h>
 
-bool SoundbufManager::LoadSoundbuf( std::string file, std::string key )
+bool SoundbufManager::LoadSoundbuf(std::string path, std::string key)
 {
-	SoundBuffer buf;
-	if (!buf.LoadFromFile(file))
-		assert(false);
-	return util::Insert(soundbufs_, std::make_pair(key, buf));
+  SoundBuffer buf;
+  if (!buf.LoadFromFile(path))
+    assert(false);
+  return util::Insert(soundbufs_, std::make_pair(key, buf));
 }
 
 SoundBuffer& SoundbufManager::GetSoundbuf( std::string key )
 {
-	if (util::Contain(soundbufs_, key))
-		return soundbufs_[key];
+  if (util::Contain(soundbufs_, key))
+    return soundbufs_[key];
 
-	assert(false);
-	static SoundBuffer nullbuf;
-	return nullbuf;
+  assert(false);
+  static SoundBuffer nullbuf;
+  return nullbuf;
 }

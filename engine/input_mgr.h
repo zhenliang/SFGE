@@ -11,41 +11,41 @@
 class ENGINE_API InputManager : public util::IGetInstance<InputManager> 
 {
 public:
-	InputManager();
+  InputManager();
 
-	virtual void OnEvent(const Event& eventReceived);
+  virtual void OnEvent(const Event& event);
 
-	bool IsKeyDown(Key::Code keyCode) const;
-	bool IsMouseButtonDown(Mouse::Button button) const;
+  bool IsKeyDown(Key::Code code) const;
+  bool IsMouseButtonDown(Mouse::Button button) const;
 
-	bool GetKeyState(Key::Code keyCode) const;
-	bool GetMouseButtonState(Mouse::Button button) const;
+  bool GetKeyState(Key::Code code) const;
+  bool GetMouseButtonState(Mouse::Button button) const;
 
-	bool IsKeyReleased(Key::Code keyCode) const;
-	bool IsMouseButtonReleased(Mouse::Button button) const;
+  bool IsKeyReleased(Key::Code keyCode) const;
+  bool IsMouseButtonReleased(Mouse::Button button) const;
 
-	int GetMouseX() const;
-	int GetMouseY() const;
+  int GetMouseX() const;
+  int GetMouseY() const;
 
-	void EndUpdate();
+  void EndUpdate();
 
-	void Reset();
-
-private:
-	void ResetDowns();
-	void ResetStates();
-	void ResetReleases();
+  void Reset();
 
 private:
-	bool keyDowns_[Key::Count];
-	bool mouseButtonDowns_[Mouse::ButtonCount];
+  void ResetDownInfos();
+  void ResetStateInfos();
+  void ResetReleaseInfos();
 
-	bool keyStates_[Key::Count];
-	bool mouseButtonStates_[Mouse::ButtonCount];
+private:
+  bool keyDowns_[Key::Count];
+  bool mouseButtonDowns_[Mouse::ButtonCount];
 
-	bool keyReleases_[Key::Count];
-	bool mouseButtonReleases_[Mouse::ButtonCount];
+  bool keyStates_[Key::Count];
+  bool mouseButtonStates_[Mouse::ButtonCount];
 
-	int mouseX_;
-	int mouseY_;
+  bool keyReleases_[Key::Count];
+  bool mouseButtonReleases_[Mouse::ButtonCount];
+
+  int mouseX_;
+  int mouseY_;
 };

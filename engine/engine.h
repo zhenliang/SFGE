@@ -8,11 +8,11 @@
 // engine 模块和使用 engine 的模块都不能定义 ENGINE_DYMAMIC
 
 #ifdef ENGINE_DYMAMIC
-	#ifdef _USRDLL
-		#define ENGINE_API __declspec(dllexport)
-	#else
-		#define ENGINE_API __declspec(dllimport)
-	#endif
+  #ifdef _USRDLL
+    #define ENGINE_API __declspec(dllexport)
+  #else
+    #define ENGINE_API __declspec(dllimport)
+  #endif
 #else
-	#define ENGINE_API 
+  #define ENGINE_API 
 #endif

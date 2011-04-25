@@ -6,4 +6,3 @@ struct lua_State;
 extern luaL_Reg kSoundMgrLib[];
 
 int ReigsterSound(lua_State* L);
-

@@ -7,6 +7,6 @@
 class ENGINE_API App : public RenderWindow, public util::IGetInstance<App>
 {
 public:
-	App() {}
-	virtual ~App() {}
+  App() {}
+  virtual ~App() {}
 };

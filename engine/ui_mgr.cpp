@@ -2,7 +2,13 @@
 
 #include "script_mgr.h"
 
-UIWidget* UIManager::Create( std::string luafile )
+UIWidget* UIManager::Create(int type)
+{
+  // TODO:
+  return NULL;
+}
+
+UIWidget* UIManager::Create(const std::string& luafile)
 {
 	ScriptManager& scriptMgr = ScriptManager::GetInstance();
 	scriptMgr.DoFile(luafile);

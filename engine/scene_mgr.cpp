@@ -15,70 +15,70 @@ SceneManager::SceneManager()
 
 SceneManager::~SceneManager()
 {
-	util::Vist(objects_, util::DeleteVisitor_Second());
+  util::Vist(objects_, util::DeleteVisitor_Second());
 }
 
-void SceneManager::Update( float delta )
+void SceneManager::Update(float delta)
 {
-	util::Vist(objects_, util::UpdateVisitor_Second(delta));
-	ClearDeadObjects();
+  util::Vist(objects_, util::UpdateVisitor_Second(delta));
+  ClearDeadObjects();
 }
 
-void SceneManager::Render( RenderTarget& target ) const
+void SceneManager::Render(RenderTarget& target) const
 {
-	util::Vist(objects_, RenderVisitor_Second(target));
+  util::Vist(objects_, RenderVisitor_Second(target));
 }
 
-bool SceneManager::AddObject( const std::string& name, Object* obj )
+bool SceneManager::AddObject(const std::string& name, Object* obj)
 {
-	return util::Insert(objects_, std::make_pair(name, obj));
+  return util::Insert(objects_, std::make_pair(name, obj));
 }
 
-bool SceneManager::AddObject( Object* obj , const std::string& prefix /*= ""*/)
+bool SceneManager::AddObject(Object* obj , const std::string& namePrefix /*= ""*/)
 {
-	return AddObject(GetUniqueName(prefix), obj);
+  return AddObject(GetUniqueName(namePrefix), obj);
 }
 
-bool SceneManager::RemoveObject( const std::string& name )
+bool SceneManager::RemoveObject(const std::string& name)
 {
-	return util::Remove(objects_, name);
+  return util::Remove(objects_, name);
 }
 
-Object* SceneManager::GetObject( const std::string& name ) const
+Object* SceneManager::GetObject(const std::string& name) const
 {
-	return util::Get(objects_, name);
+  return util::Get(objects_, name);
 }
 
 SceneManager::Objects& SceneManager::GetAllObjects() const
 {
-	return objects_;
+  return objects_;
 }
 
 void SceneManager::ClearDeadObjects() 
 {
-	Objects::iterator i = objects_.begin(); 
-	Objects::iterator end = objects_.end();
-	while (i != end)
-	{
-		Objects::iterator dead = end;
+  Objects::iterator i = objects_.begin(); 
+  Objects::iterator end = objects_.end();
+  while (i != end)
+  {
+    Objects::iterator dead = end;
 
-		if (i->second->GetDead())
-			dead = i;
+    if (i->second->GetDead())
+      dead = i;
 
-		++i;
+    ++i;
 
-		if (dead != end)
-		{
-			delete dead->second;
-			objects_.erase(dead);
-		}
-	}
+    if (dead != end)
+    {
+      delete dead->second;
+      objects_.erase(dead);
+    }
+  }
 }
 
 std::string GetUniqueName( std::string prefix /*= ""*/ )
 {
-	static long long nextId = 0;
-	std::stringstream ss;
-	ss<<nextId++;
-	return prefix + "_" + ss.str();
+  static long long nextId = 0;
+  std::stringstream ss;
+  ss << nextId++;
+  return prefix + "_" + ss.str();
 }

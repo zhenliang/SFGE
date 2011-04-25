@@ -9,13 +9,13 @@
 class ENGINE_API ImageManager : public util::IGetInstance<ImageManager>
 {
 public:
-	ImageManager() {}
-	virtual ~ImageManager() {}
+  ImageManager() {}
+  virtual ~ImageManager() {}
 
-	bool LoadImage(std::string file, std::string key);
-	Image& GetImage(std::string key);
+  bool LoadImage(const std::string path, const std::string& key);
+  Image& GetImage(const std::string& key);
 
 private:
-	typedef std::map<std::string, Image> Images;
-	Images images_;
+  typedef std::map<std::string, Image> Images;
+  Images images_;
 };
