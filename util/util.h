@@ -11,13 +11,13 @@ namespace util
 // util 模块和使用 util 的模块都不能定义 UTIL_DYNAMIC
 
 #ifdef UTIL_DYNAMIC 
-	#ifdef _USRDLL
-		#define UTIL_API __declspec(dllexport)
-	#else
-		#define UTIL_API __declspec(dllimport)
-	#endif
+  #ifdef _USRDLL
+    #define UTIL_API __declspec(dllexport)
+  #else
+    #define UTIL_API __declspec(dllimport)
+  #endif
 #else
-	#define UTIL_API
+  #define UTIL_API
 #endif
 
 }

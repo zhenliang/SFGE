@@ -4,7 +4,7 @@
 
 namespace util
 {
-	inline int ToPositiveIndex(lua_State* L, int index);
+  inline int ToPositiveIndex(lua_State* L, int index);
 
-	#include "lua_base.inl"
+  #include "lua_base.inl"
 }

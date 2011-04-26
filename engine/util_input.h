@@ -2,4 +2,4 @@
 
 #include "engine.h"
 
-bool ENGINE_API IsKeyReleased(const Event& event, Key::Code keyCode);
+ENGINE_API bool IsKeyReleased(const Event& event, Key::Code keyCode);

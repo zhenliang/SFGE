@@ -6,414 +6,453 @@
 
 namespace util
 {	
-    // 递归打印一个人表
+  // 递归打印一个人表
 
-	int PrintTable( lua_State* L )
-	{
-		// first key
+  int PrintTable( lua_State* L )
+  {
+    // first key
 
-		lua_pushnil(L);
-		int tableIndex = lua_gettop(L) - 1;
-		while (lua_next(L, tableIndex) != 0) 
-		{
-			for (int i = 0; i < tableIndex - 1; ++i)
-				printf("  ");
-
-			// print key-type and value-type, format: %s - %s
-
-			printf("%s - %s\n", 
-				lua_typename(L, lua_type(L, -2)),	// key type
-				lua_typename(L, lua_type(L, -1)));	// value type
-
-			// value type
-
-			if (lua_typename(L, lua_type(L, -1)) == "table")
-				PrintTable(L);
-
-			lua_pop(L, 1); // pop value, keep key
-		}
-
-		return 1;
-	}
-
-    // 在栈顶的表是否有某个键
-
-	bool HasField( lua_State* L, int key )
-	{
-		return HasField(L, -1, key);
-	}
-
-    // 在栈 index 位置的表是否有某个键
-
-	bool HasField(lua_State* L, int index, int key)
-	{
-		int tableIndex = ToPositiveIndex(L, index);
-		lua_pushinteger(L, key);
-		lua_gettable(L, tableIndex);
-		bool result = !lua_isnil(L, -1);
-		lua_pop(L, 1);
-		return result;
-	}
-
-    // 在栈顶的表是否有某个键
-
-	bool HasField( lua_State* L, const std::string& key )
-	{
-		return HasField(L, -1, key);
-	}
-
-    // 在栈 index 位置的表是否有某个键
-
-	bool HasField(lua_State* L, int index, const std::string& key)
-	{
-		lua_getfield(L, index, key.c_str());
-		bool result = !lua_isnil(L, -1);
-		lua_pop(L, 1);
-		return result;
-	}
-
-    bool GetField_Boolean(lua_State* L, int key)
+    lua_pushnil(L);
+    int tableIndex = lua_gettop(L) - 1;
+    while (lua_next(L, tableIndex) != 0) 
     {
-        return GetField_Boolean(L, -1, key);
+      for (int i = 0; i < tableIndex - 1; ++i)
+        printf("  ");
+
+      // print key-type and value-type, format: %s - %s
+
+      printf("%s - %s\n", 
+        lua_typename(L, lua_type(L, -2)),	// key type
+        lua_typename(L, lua_type(L, -1)));	// value type
+
+      // value type
+
+      if (lua_typename(L, lua_type(L, -1)) == "table")
+        PrintTable(L);
+
+      lua_pop(L, 1); // pop value, keep key
     }
 
-    bool GetField_Boolean(lua_State* L, int index, int key)
-    {
-        int tableIndex = ToPositiveIndex(L, index);
-        assert(lua_istable(L, tableIndex));
+    return 1;
+  }
 
-        // 获取结果
+  // 在栈顶的表是否有某个键
 
-        lua_pushinteger(L, key);
-        lua_gettable(L, tableIndex);
+  bool HasField( lua_State* L, int key )
+  {
+    return HasField(L, -1, key);
+  }
+
+  // 在栈 index 位置的表是否有某个键
 
-        bool result = false;
-        if (lua_isboolean(L, -1))
-            result = (lua_toboolean(L, -1) != 0);
-        else if (lua_isnumber(L, -1))
-            result = (lua_tonumber(L, -1) != 0.);
+  bool HasField(lua_State* L, int index, int key)
+  {
+    int tableIndex = ToPositiveIndex(L, index);
+    lua_pushinteger(L, key);
+    lua_gettable(L, tableIndex);
+    bool result = !lua_isnil(L, -1);
+    lua_pop(L, 1);
+    return result;
+  }
+
+  // 在栈顶的表是否有某个键
+
+  bool HasField( lua_State* L, const std::string& key )
+  {
+    return HasField(L, -1, key);
+  }
+
+  // 在栈 index 位置的表是否有某个键
+
+  bool HasField(lua_State* L, int index, const std::string& key)
+  {
+    lua_getfield(L, index, key.c_str());
+    bool result = !lua_isnil(L, -1);
+    lua_pop(L, 1);
+    return result;
+  }
+
+  bool GetField_Boolean(lua_State* L, int key)
+  {
+    return GetField_Boolean(L, -1, key);
+  }
+
+  bool GetField_Boolean(lua_State* L, int index, int key)
+  {
+    int tableIndex = ToPositiveIndex(L, index);
+    assert(lua_istable(L, tableIndex));
 
-        // 结果出栈，还原栈
+    // 获取结果
 
-        lua_pop(L, 1);
+    lua_pushinteger(L, key);
+    lua_gettable(L, tableIndex);
 
-        return result;	
-    }
+    bool result = false;
+    if (lua_isboolean(L, -1))
+      result = (lua_toboolean(L, -1) != 0);
+    else if (lua_isnumber(L, -1))
+      result = (lua_tonumber(L, -1) != 0.);
 
-    // 获取栈顶的表的 key 的值
+    // 结果出栈，还原栈
 
-    bool GetField_Boolean(lua_State* L, const std::string& key)
-    {
-        return GetField_Boolean(L, -1, key);
-    }
+    lua_pop(L, 1);
 
-    bool GetField_Boolean( lua_State* L, int index, const std::string& key )
-    {
-        int tableIndex = ToPositiveIndex(L, index);
-        assert(lua_istable(L, tableIndex));
+    return result;	
+  }
 
-        // 获取结果
-        lua_pushstring(L, key.c_str());
-        lua_gettable(L, tableIndex);
+  // 获取栈顶的表的 key 的值
 
-        bool result = false;
-        if (lua_isboolean(L, -1))
-            result = (lua_toboolean(L, -1) != 0);
-        else if (lua_isnumber(L, -1))
-            result = (lua_tonumber(L, -1) != 0.);
+  bool GetField_Boolean(lua_State* L, const std::string& key)
+  {
+    return GetField_Boolean(L, -1, key);
+  }
 
-        // 结果出栈，还原栈
-        lua_pop(L, 1);
+  bool GetField_Boolean( lua_State* L, int index, const std::string& key )
+  {
+    int tableIndex = ToPositiveIndex(L, index);
+    assert(lua_istable(L, tableIndex));
 
-        return result;
-    }
+    // 获取结果
 
-    bool SafeGetField_Boolean(lua_State* L, int key)
-    {
-        return SafeGetField_Boolean(L, key);
-    }
+    lua_pushstring(L, key.c_str());
+    lua_gettable(L, tableIndex);
 
-    bool SafeGetField_Boolean(lua_State* L, int index, int key)
-    {
-        if (HasField(L, index, key))
-            return GetField_Boolean(L, index, key);
-        assert(false);
-        return false;
-    }
+    bool result = false;
+    if (lua_isboolean(L, -1))
+      result = (lua_toboolean(L, -1) != 0);
+    else if (lua_isnumber(L, -1))
+      result = (lua_tonumber(L, -1) != 0.);
 
-    bool SafeGetField_Boolean(lua_State* L, const std::string& key)
-    {
-        return SafeGetField_Boolean(L, -1, key);
-    }
+    // 结果出栈，还原栈
 
-    bool SafeGetField_Boolean( lua_State* L, int index, const std::string& key )
-    {
-        if (HasField(L, index, key))
-            return GetField_Boolean(L, index, key);
-        assert(false);
-        return false;
-    }
+    lua_pop(L, 1);
 
-    // 获取栈顶的表的 key 的值
+    return result;
+  }
 
-	int GetField_Integer( lua_State* L, int key )
-	{
-		return GetField_Integer(L, -1, key);
-	}
+  bool SafeGetField_Boolean(lua_State* L, int key)
+  {
+    return SafeGetField_Boolean(L, key);
+  }
+
+  bool SafeGetField_Boolean(lua_State* L, int index, int key)
+  {
+    if (HasField(L, index, key))
+      return GetField_Boolean(L, index, key);
+    assert(false);
+    return false;
+  }
+
+  bool SafeGetField_Boolean(lua_State* L, const std::string& key)
+  {
+    return SafeGetField_Boolean(L, -1, key);
+  }
+
+  bool SafeGetField_Boolean( lua_State* L, int index, const std::string& key )
+  {
+    if (HasField(L, index, key))
+      return GetField_Boolean(L, index, key);
+    assert(false);
+    return false;
+  }
 
-	int GetField_Integer( lua_State* L, int index, int key )
-	{
-		int tableIndex = ToPositiveIndex(L, index);
-		assert(lua_istable(L, tableIndex));
+  // 获取栈顶的表的 key 的值
 
-		// 获取结果
+  int GetField_Integer( lua_State* L, int key )
+  {
+    return GetField_Integer(L, -1, key);
+  }
 
-		lua_pushinteger(L, key);
-		lua_gettable(L, tableIndex);
+  int GetField_Integer( lua_State* L, int index, int key )
+  {
+    int tableIndex = ToPositiveIndex(L, index);
+    assert(lua_istable(L, tableIndex));
 
-		int result = 0;
-		if (lua_isnumber(L, -1))
-			result = lua_tointeger(L, -1);
+    // 获取结果
 
-		// 结果出栈，还原栈
+    lua_pushinteger(L, key);
+    lua_gettable(L, tableIndex);
 
-		lua_pop(L, 1);
+    int result = 0;
+    if (lua_isnumber(L, -1))
+      result = lua_tointeger(L, -1);
 
-		return result;	
-	}
+    // 结果出栈，还原栈
 
-    // 获取栈顶的表的 key 的值
-
-	int GetField_Integer( lua_State* L, const std::string& key )
-	{
-		return GetField_Integer(L, -1, key);
-	}
+    lua_pop(L, 1);
 
-	int GetField_Integer( lua_State* L, int index, const std::string& key )
-	{
-		int tableIndex = ToPositiveIndex(L, index);
-		assert(lua_istable(L, tableIndex));
+    return result;	
+  }
 
-		// 获取结果
-		lua_pushstring(L, key.c_str());
-		lua_gettable(L, tableIndex);
-
-		int result = 0;
-		if (lua_isnumber(L, -1))
-			result = lua_tointeger(L, -1);
-
-		// 结果出栈，还原栈
-		lua_pop(L, 1);
-
-		return result;	
-	}
-
-    // 获取栈顶的表的 key 的值
+  // 获取栈顶的表的 key 的值
 
-	double GetField_Number(lua_State* L, int key)
-	{
-		return GetField_Number(L, -1, key);
-	}
-
-	double GetField_Number( lua_State* L, int index, int key )
-	{
-		int tableIndex = ToPositiveIndex(L, index);
-		assert(lua_istable(L, tableIndex));
-
-		// 获取结果
-		lua_pushinteger(L, key);
-		lua_gettable(L, tableIndex);
-
-		double result = 0.0f;
-		if (lua_isnumber(L, -1))
-			result = lua_tonumber(L, -1);
+  int GetField_Integer( lua_State* L, const std::string& key )
+  {
+    return GetField_Integer(L, -1, key);
+  }
 
-		// 结果出栈，还原栈
-		lua_pop(L, 1);
-
-		return result;	
-	}
+  int GetField_Integer( lua_State* L, int index, const std::string& key )
+  {
+    int tableIndex = ToPositiveIndex(L, index);
+    assert(lua_istable(L, tableIndex));
 
-    // 获取栈顶的表的 key 的值
+    // 获取结果
 
-	double GetField_Number(lua_State* L, const std::string& key)
-	{
-		return GetField_Number(L, -1, key);
-	}
+    lua_pushstring(L, key.c_str());
+    lua_gettable(L, tableIndex);
 
-    double GetField_Number(lua_State* L, int index, const std::string& key )
-    {
-        int tableIndex = ToPositiveIndex(L, index);
-        assert(lua_istable(L, tableIndex));
+    int result = 0;
+    if (lua_isnumber(L, -1))
+      result = lua_tointeger(L, -1);
 
-        // 获取结果
-        lua_pushstring(L, key.c_str());
-        lua_gettable(L, tableIndex);
+    // 结果出栈，还原栈
 
-        double result = 0.0;
-        if (lua_isnumber(L, -1))
-            result = lua_tonumber(L, -1);
+    lua_pop(L, 1);
 
-        // 结果出栈，还原栈
-        lua_pop(L, 1);
+    return result;	
+  }
 
-        return result;	
-    }
+  int SafeGetField_Integer(lua_State* L, int key)
+  {
+    return SafeGetField_Integer(L, -1, key);
+  }
 
-    double SafeGetField_Number(lua_State* L, const std::string& key)
-    {
-        return SafeGetField_Number(L, -1, key);
-    }
+  int SafeGetField_Integer(lua_State* L, int index, int key)
+  {
+    if (HasField(L, index, key))
+      return GetField_Integer(L, index, key);
+    assert(false);
+    return int();
+  }
 
-    double SafeGetField_Number(lua_State* L, int index, const std::string& key )
-    {
-        if (HasField(L, index, key))
-            return GetField_Number(L, index, key);
-        assert(false);
-        return double();
-    }
+  int SafeGetField_Integer(lua_State* L, const std::string& key)
+  {
+    return SafeGetField_Integer(L, -1, key);
+  }
 
-    UTIL_API double SafeGetField_Number(lua_State* L, int key)
-    {
-        return SafeGetField_Number(L, -1, key);
-    }
+  int SafeGetField_Integer(lua_State* L, int index, const std::string& key)
+  {
+    if (HasField(L, index, key))
+      return GetField_Integer(L, index, key);
+    assert(false);
+    return int();
+  }
 
-    UTIL_API double SafeGetField_Number(lua_State* L, int index, int key)
-    {
-        if (HasField(L, index, key))
-            return GetField_Number(L, index, key);
-        assert(false);
-        return double();
-    }
+  // 获取栈顶的表的 key 的值
 
-    // 获取栈顶的表的 key 的值
+  double GetField_Number(lua_State* L, int key)
+  {
+    return GetField_Number(L, -1, key);
+  }
 
-	std::string GetField_String(lua_State* L, const std::string& key)
-	{
-		return GetField_String(L, -1, key);
-	}
+  double GetField_Number( lua_State* L, int index, int key )
+  {
+    int tableIndex = ToPositiveIndex(L, index);
+    assert(lua_istable(L, tableIndex));
 
-	std::string UTIL_API GetField_String( lua_State* L, int index, const std::string& key )
-	{
-		int tableIndex = ToPositiveIndex(L, index);
-		assert(lua_istable(L, tableIndex));
+    // 获取结果
 
-		// 获取结果
-		lua_pushstring(L, key.c_str());
-		lua_gettable(L, tableIndex);
+    lua_pushinteger(L, key);
+    lua_gettable(L, tableIndex);
 
-		std::string result = "";
-		if (lua_isstring(L, -1))
-			result = lua_tostring(L, -1);
+    double result = 0.0f;
+    if (lua_isnumber(L, -1))
+      result = lua_tonumber(L, -1);
 
-		// 结果出栈，还原栈
-		lua_pop(L, 1);
+    // 结果出栈，还原栈
 
-		return result;
-	}
+    lua_pop(L, 1);
 
-    UTIL_API std::string GetField_String(lua_State* L, int key)
-    {
-        return GetField_String(L, -1, key);
-    }
+    return result;	
+  }
 
-    UTIL_API std::string GetField_String(lua_State* L, int index, int key)
-    {
-        int tableIndex = ToPositiveIndex(L, index);
-        assert(lua_istable(L, tableIndex));
+  // 获取栈顶的表的 key 的值
 
-        // 获取结果
+  double GetField_Number(lua_State* L, const std::string& key)
+  {
+    return GetField_Number(L, -1, key);
+  }
 
-        lua_pushinteger(L, key);
-        lua_gettable(L, tableIndex);
+  double GetField_Number(lua_State* L, int index, const std::string& key )
+  {
+    int tableIndex = ToPositiveIndex(L, index);
+    assert(lua_istable(L, tableIndex));
 
-        std::string result = false;
-        if (lua_isstring(L, -1))
-            result = lua_tostring(L, -1);
+    // 获取结果
 
-        // 结果出栈，还原栈
+    lua_pushstring(L, key.c_str());
+    lua_gettable(L, tableIndex);
 
-        lua_pop(L, 1);
+    double result = 0.0;
+    if (lua_isnumber(L, -1))
+      result = lua_tonumber(L, -1);
 
-        return result;	
-    }
+    // 结果出栈，还原栈
 
-    // 获取栈顶的表的 key 的值
+    lua_pop(L, 1);
 
-	void* GetField_LightUserdata(lua_State* L, const std::string& key)
-	{
-		return GetField_LightUserdata(L, -1, key);
-	}
+    return result;	
+  }
 
-    void* GetField_LightUserdata( lua_State* L, int index, const std::string& key )
-	{
-		int tableIndex = ToPositiveIndex(L, index);
-		assert(lua_istable(L, tableIndex));
+  double SafeGetField_Number(lua_State* L, const std::string& key)
+  {
+    return SafeGetField_Number(L, -1, key);
+  }
 
-		// 获取结果
-		lua_pushstring(L, key.c_str());
-		lua_gettable(L, tableIndex);
+  double SafeGetField_Number(lua_State* L, int index, const std::string& key )
+  {
+    if (HasField(L, index, key))
+      return GetField_Number(L, index, key);
+    assert(false);
+    return double();
+  }
 
-		void* result = NULL;
-		if (lua_islightuserdata(L, -1))
-			result = lua_touserdata(L, -1);
+  double SafeGetField_Number(lua_State* L, int key)
+  {
+    return SafeGetField_Number(L, -1, key);
+  }
 
-		// 结果出栈，还原栈
-		lua_pop(L, 1);
+  double SafeGetField_Number(lua_State* L, int index, int key)
+  {
+    if (HasField(L, index, key))
+      return GetField_Number(L, index, key);
+    assert(false);
+    return double();
+  }
 
-		return result;
-	}
+  // 获取栈顶的表的 key 的值
 
-    // 获取栈顶的表的 key 的值
+  std::string GetField_String(lua_State* L, const std::string& key)
+  {
+    return GetField_String(L, -1, key);
+  }
 
-	void* GetField_Userdata(lua_State* L, const std::string& key)
-	{
-		return GetField_Userdata(L, -1, key);
-	}
+  std::string GetField_String( lua_State* L, int index, const std::string& key )
+  {
+    int tableIndex = ToPositiveIndex(L, index);
+    assert(lua_istable(L, tableIndex));
 
-    void* GetField_Userdata( lua_State* L, int index, const std::string& key )
-	{
-		int tableIndex = ToPositiveIndex(L, index);
-		assert(lua_istable(L, tableIndex));
+    // 获取结果
 
-		// 获取结果
-		lua_pushstring(L, key.c_str());
-		lua_gettable(L, tableIndex);
+    lua_pushstring(L, key.c_str());
+    lua_gettable(L, tableIndex);
 
-		void* result = NULL;
-		if (lua_isuserdata(L, -1))
-			result = lua_touserdata(L, -1);
+    std::string result = "";
+    if (lua_isstring(L, -1))
+      result = lua_tostring(L, -1);
 
-		// 结果出栈，还原栈
-		lua_pop(L, 1);
+    // 结果出栈，还原栈
 
-		return result;
-	}
+    lua_pop(L, 1);
 
-    UTIL_API std::string SafeGetField_String(lua_State* L, const std::string& key)
-    {
-        return SafeGetField_String(L, -1, key);
-    }
+    return result;
+  }
 
-    UTIL_API std::string SafeGetField_String(lua_State* L, int index, const std::string& key)
-    {
-        if (HasField(L, index, key))
-            return GetField_String(L, index, key);
-        assert(false);
-        return std::string();
-    }
+  std::string GetField_String(lua_State* L, int key)
+  {
+    return GetField_String(L, -1, key);
+  }
 
-    UTIL_API std::string SafeGetField_String(lua_State* L, int key)
-    {
-        return SafeGetField_String(L, -1, key);
-    }
+  std::string GetField_String(lua_State* L, int index, int key)
+  {
+    int tableIndex = ToPositiveIndex(L, index);
+    assert(lua_istable(L, tableIndex));
 
-    UTIL_API std::string SafeGetField_String(lua_State* L, int index, int key)
-    {
-        if (HasField(L, index, key))
-            return GetField_String(L, index, key);
-        assert(false);
-        return std::string();
-    }
+    // 获取结果
 
+    lua_pushinteger(L, key);
+    lua_gettable(L, tableIndex);
+
+    std::string result = false;
+    if (lua_isstring(L, -1))
+      result = lua_tostring(L, -1);
+
+    // 结果出栈，还原栈
+
+    lua_pop(L, 1);
+
+    return result;	
+  }
+
+  std::string SafeGetField_String(lua_State* L, const std::string& key)
+  {
+    return SafeGetField_String(L, -1, key);
+  }
+
+  std::string SafeGetField_String(lua_State* L, int index, const std::string& key)
+  {
+    if (HasField(L, index, key))
+      return GetField_String(L, index, key);
+    assert(false);
+    return std::string();
+  }
+
+  std::string SafeGetField_String(lua_State* L, int key)
+  {
+    return SafeGetField_String(L, -1, key);
+  }
+
+  std::string SafeGetField_String(lua_State* L, int index, int key)
+  {
+    if (HasField(L, index, key))
+      return GetField_String(L, index, key);
+    assert(false);
+    return std::string();
+  }
+
+  // 获取栈顶的表的 key 的值
+
+  void* GetField_LightUserdata(lua_State* L, const std::string& key)
+  {
+    return GetField_LightUserdata(L, -1, key);
+  }
+
+  void* GetField_LightUserdata( lua_State* L, int index, const std::string& key )
+  {
+    int tableIndex = ToPositiveIndex(L, index);
+    assert(lua_istable(L, tableIndex));
+
+    // 获取结果
+
+    lua_pushstring(L, key.c_str());
+    lua_gettable(L, tableIndex);
+
+    void* result = NULL;
+    if (lua_islightuserdata(L, -1))
+      result = lua_touserdata(L, -1);
+
+    // 结果出栈，还原栈
+
+    lua_pop(L, 1);
+
+    return result;
+  }
+
+  // 获取栈顶的表的 key 的值
+
+  void* GetField_Userdata(lua_State* L, const std::string& key)
+  {
+    return GetField_Userdata(L, -1, key);
+  }
+
+  void* GetField_Userdata( lua_State* L, int index, const std::string& key )
+  {
+    int tableIndex = ToPositiveIndex(L, index);
+    assert(lua_istable(L, tableIndex));
+
+    // 获取结果
+
+    lua_pushstring(L, key.c_str());
+    lua_gettable(L, tableIndex);
+
+    void* result = NULL;
+    if (lua_isuserdata(L, -1))
+      result = lua_touserdata(L, -1);
+
+    // 结果出栈，还原栈
+
+    lua_pop(L, 1);
+
+    return result;
+  }
 }

@@ -15,24 +15,22 @@
 
 namespace util
 {
-
-class TestUnit
-{
-public:
+  class TestUnit
+  {
+  public:
     TestUnit(const std::string& suite, const std::string& name);
-	virtual void Run() = 0;
+    virtual void Run() = 0;
 
-protected:
+  protected:
     std::string suite_;
     std::string name_;
-};
+  };
 
-template <class T1, class T2>
-void Fail(const std::string& suite, const std::string& test, const std::string& file, long line,
-          const T1& expected, const T2& actual);
-void Fail(const std::string& suite, const std::string& test, const std::string& file, long line,
-          const std::string& msg);
+  template <class T1, class T2>
+  void Fail(const std::string& suite, const std::string& test, const std::string& file, long line,
+    const T1& expected, const T2& actual);
+  void Fail(const std::string& suite, const std::string& test, const std::string& file, long line,
+    const std::string& msg);
 
-#include "litest.inl"
-
+  #include "litest.inl"
 }

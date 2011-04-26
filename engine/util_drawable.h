@@ -2,4 +2,4 @@
 
 #include "engine.h"
 
-void ENGINE_API SetAlpha(Drawable& obj, float alpha);
+ENGINE_API void SetAlpha(Drawable& obj, float alpha);

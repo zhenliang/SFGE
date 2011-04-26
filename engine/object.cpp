@@ -16,16 +16,16 @@ Object::~Object()
 
 void Object::Update( float delta )
 {
-	if (dead_)
-		return;
+  if (dead_)
+    return;
 
-	OnUpdate(delta);
+  OnUpdate(delta);
 }
 
 void Object::Render( RenderTarget& target )
 {
-	if (dead_)
-		return;
+  if (dead_)
+    return;
 
-	OnRender(target);
+  OnRender(target);
 }

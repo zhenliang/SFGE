@@ -2,18 +2,16 @@
 
 namespace util
 {
+  template <class T>
+  class IGetInstance
+  {
+  protected:
+    IGetInstance() {}
 
-template <class T>
-class IGetInstance
-{
-protected:
-	IGetInstance() {}
+  public:
+    virtual ~IGetInstance() {}
+    static T& GetInstance();
+  };
 
-public:
-	virtual ~IGetInstance() {}
-	static T& GetInstance();
-};
-
-#include "i_get_instance.inl"
-
+  #include "i_get_instance.inl"
 }

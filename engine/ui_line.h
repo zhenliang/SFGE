@@ -7,25 +7,25 @@
 class ENGINE_API UILine : public UIWidget
 {
 public:
-	UILine();
-	virtual ~UILine() {}
+  UILine();
+  virtual ~UILine() {}
 
-	virtual void Update(float delta);
-	virtual void Render(RenderTarget& target) const;
+  virtual void Update(float delta);
+  virtual void Render(RenderTarget& target) const;
 
-	virtual void PostSetTopLeft();
-	virtual void PostSetWidthHeight();
+  virtual void PostSetTopLeft();
+  virtual void PostSetWidthHeight();
 
-	virtual void SetAlpha(float val);
-	
-	void SetThickness(float thickness);
-	void SetColor(Color color);
+  virtual void SetAlpha(float val);
 
-private:
-	void RebuildLineShape();
+  void SetThickness(float thickness);
+  void SetColor(Color color);
 
 private:
-	Shape lineShape_;
-	float thickness_;
-	Color color_;
+  void RebuildLineShape();
+
+private:
+  Shape lineShape_;
+  float thickness_;
+  Color color_;
 };

@@ -7,14 +7,14 @@ class UIButton;
 class ENGINE_API UIWindow : public UIPanel
 {
 public:
-	UIWindow();
-	virtual ~UIWindow() {}
+  UIWindow();
+  virtual ~UIWindow() {}
 
-	UIButton* GetCloseButton();
+  UIButton* GetCloseButton();
 
 private:
-	void InitCloseButton();
+  void InitCloseButton();
 
 public:
-	static const std::string CLOSE_BUTTON;
+  static const std::string CLOSE_BUTTON;
 };

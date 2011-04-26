@@ -28,6 +28,10 @@ namespace util
   UTIL_API int GetField_Integer(lua_State* L, int index, int key);
   UTIL_API int GetField_Integer(lua_State* L, const std::string& key);
   UTIL_API int GetField_Integer(lua_State* L, int index, const std::string& key);
+  UTIL_API int SafeGetField_Integer(lua_State* L, int key);
+  UTIL_API int SafeGetField_Integer(lua_State* L, int index, int key);
+  UTIL_API int SafeGetField_Integer(lua_State* L, const std::string& key);
+  UTIL_API int SafeGetField_Integer(lua_State* L, int index, const std::string& key);
 
   UTIL_API double GetField_Number(lua_State* L, int key);
   UTIL_API double GetField_Number(lua_State* L, int index, int key);

@@ -6,26 +6,26 @@
 
 namespace util
 {
-	template <class Key>
-	class ItemCounter : public IGetInstance< ItemCounter<Key> >
-	{
-	public:
-		typedef std::map<Key, int> Items;
+  template <class Key>
+  class ItemCounter : public IGetInstance< ItemCounter<Key> >
+  {
+  public:
+    typedef std::map<Key, int> Items;
 
-		ItemCounter() {}
-		virtual ~ItemCounter() {}
+    ItemCounter() {}
+    virtual ~ItemCounter() {}
 
-		int GetCount(const Key& key);
-		void SetCount(const Key& key, int count);
-		void ChangeCount(const Key& key, int change);
+    int GetCount(const Key& key);
+    void SetCount(const Key& key, int count);
+    void ChangeCount(const Key& key, int change);
 
-        const Items& GetItems() const { return items_; }
+    const Items& GetItems() const { return items_; }
 
-		void Reset();
+    void Reset();
 
-	protected:
-		Items items_;
-	};
+  protected:
+    Items items_;
+  };
 
-#include "item_counter.inl"
+  #include "item_counter.inl"
 }
