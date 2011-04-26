@@ -1,14 +1,16 @@
 SFGE is a simple and fast game engine that base on SFML.
 
-Dependices:
-  - lua 5.1.x
-  - sfml 1.6
-	
 Features:
   - resource managers
   - gui module
   - lua binding
-  - utility module
+  
+Screenshots:
+  - https://github.com/zhenliang/SFGE/tree/master/screenshots
 
+Dependices:
+  - lua 5.1.x
+  - sfml 1.6
+	
 Note:
   - currently for windows only
