@@ -9,8 +9,8 @@ Screenshots:
   - https://github.com/zhenliang/SFGE/tree/master/screenshots
 
 Dependices:
-  - lua 5.1.x
   - sfml 1.6
-	
+  - lua 5.1.x
+
 Note:
   - currently for windows only
