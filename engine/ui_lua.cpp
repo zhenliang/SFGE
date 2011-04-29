@@ -282,7 +282,7 @@ int Window_( lua_State* L )
 
 int Widget(lua_State* L)
 {
-  UIWindow* widget = new UIWindow;
+  UIWidget* widget = new UIWidget;
 
   SetName(L, widget);
   SetTextUserData(L, widget);
