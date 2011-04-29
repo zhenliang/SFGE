@@ -19,11 +19,13 @@
 void RegisterUICreators()
 {
   ScriptManager& scriptMgr = ScriptManager::GetInstance();
+
   scriptMgr.RegisterFunc("Button", Button);
   scriptMgr.RegisterFunc("Label", Label);
   scriptMgr.RegisterFunc("Line", Line);
   scriptMgr.RegisterFunc("Panel", Panel);
   scriptMgr.RegisterFunc("Progressbar", Progressbar);
+  scriptMgr.RegisterFunc("Widget", Widget);
   scriptMgr.RegisterFunc("Window", Window_);
 }
 
@@ -143,7 +145,7 @@ namespace
 
 }
 
-int Button( lua_State* L )
+int Button(lua_State* L)
 {
   UIButton* btn = new UIButton;
 
@@ -164,7 +166,7 @@ int Button( lua_State* L )
   return 1;
 }
 
-int Label( lua_State* L )
+int Label(lua_State* L)
 {
   UILabel* label = new UILabel;
 
@@ -212,7 +214,7 @@ int Line(lua_State* L)
   return 1;
 }
 
-int Panel( lua_State* L )
+int Panel(lua_State* L)
 {
   UIPanel* panel = new UIPanel;
 
@@ -274,6 +276,20 @@ int Window_( lua_State* L )
   }
 
   lua_pushlightuserdata(L, window);
+
+  return 1;
+}
+
+int Widget(lua_State* L)
+{
+  UIWindow* widget = new UIWindow;
+
+  SetName(L, widget);
+  SetTextUserData(L, widget);
+
+  AddWidget(L, widget);
+
+  lua_pushlightuserdata(L, widget);
 
   return 1;
 }

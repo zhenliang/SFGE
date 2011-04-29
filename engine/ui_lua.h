@@ -10,3 +10,4 @@ int Line(lua_State* L);
 int Panel(lua_State* L);
 int Progressbar(lua_State* L);
 int Window_(lua_State* L);
+int Widget(lua_State* L);
