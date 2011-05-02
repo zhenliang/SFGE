@@ -143,6 +143,15 @@ namespace
     AddWidget(L, btn);
   }
 
+  void SetAlpha(lua_State* L, UIWidget* widget)
+  {
+    assert(widget);
+    if (!widget)
+      return;
+
+    if (util::HasField(L, "alpha"))
+      widget->SetAlpha(util::GetField_Integer(L, "alpha"));
+  }
 }
 
 int Button(lua_State* L)
@@ -160,6 +169,8 @@ int Button(lua_State* L)
   SetPressedSoundKey(L, btn);
 
   AddWidget(L, btn);
+
+  SetAlpha(L, btn);
 
   lua_pushlightuserdata(L, btn);
 
@@ -198,6 +209,8 @@ int Label(lua_State* L)
     lua_pop(L, 1);
   }
 
+  SetAlpha(L, label);
+
   lua_pushlightuserdata(L, label);
 
   return 1;
@@ -210,6 +223,7 @@ int Line(lua_State* L)
   SetTopLeftWidthHeight(L, line);
   SetTooltip(L, line);
   SetTextUserData(L, line);
+  SetAlpha(L, line);
   lua_pushlightuserdata(L, line);
   return 1;
 }
@@ -226,6 +240,8 @@ int Panel(lua_State* L)
   SetTextUserData(L, panel);
 
   AddWidget(L, panel);
+
+  SetAlpha(L, panel);
 
   lua_pushlightuserdata(L, panel);
 
@@ -245,6 +261,8 @@ int Progressbar(lua_State* L)
   SetTextUserData(L, progressbar);
 
   AddWidget(L, progressbar);
+
+  SetAlpha(L, progressbar);
 
   lua_pushlightuserdata(L, progressbar);
 
@@ -275,6 +293,8 @@ int Window_( lua_State* L )
     lua_pop(L, 1);
   }
 
+  SetAlpha(L, window);
+
   lua_pushlightuserdata(L, window);
 
   return 1;
@@ -288,6 +308,8 @@ int Widget(lua_State* L)
   SetTextUserData(L, widget);
 
   AddWidget(L, widget);
+
+  SetAlpha(L, widget);
 
   lua_pushlightuserdata(L, widget);
 
