@@ -16,7 +16,7 @@ bool CharsetManager::AddCharset(const std::string& key, const std::string& chars
 
   // 输出提取出来的字符串（注意 std::wcout<<wcharset 是无法输出汉字的，待研究）
 
-  // std::cout<<util::WS2S(wcharset)<<std::endl;
+  std::cout<<util::WS2S(wcharset)<<std::endl;
 
   // 存入管理器
 
