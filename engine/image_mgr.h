@@ -12,7 +12,7 @@ public:
   ImageManager() {}
   virtual ~ImageManager() {}
 
-  bool LoadImage(const std::string path, const std::string& key);
+  bool LoadImage(const std::string& path, const std::string& key);
   Image& GetImage(const std::string& key);
 
 private:
