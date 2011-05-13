@@ -97,6 +97,8 @@ namespace
     luaL_openlib(L, "SoundManager", kSoundMgrLib, 0);
     luaL_openlib(L, "SoundbufManager", kSoundbufMgrLib, 0);
     luaL_openlib(L, "StringManager", kStringMgrLib, 0);
+
+    LuaImage::Register(L);
   }
 }
 
