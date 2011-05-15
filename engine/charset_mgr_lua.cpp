@@ -14,10 +14,7 @@ int AddCharset( lua_State* L )
 {
   std::string key = lua_tostring(L, 1);
   std::string charset = lua_tostring(L, 2);
-
   bool result = CharsetManager::GetInstance().AddCharset(key, charset);
-
   lua_pushboolean(L, result);
-
   return 1;
 }

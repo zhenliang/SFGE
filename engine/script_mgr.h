@@ -3,6 +3,7 @@
 #include <lua\lua.hpp>
 
 #include <util\i_get_instance.h>
+#include <util\logger.h>
 
 #include "engine.h"
 

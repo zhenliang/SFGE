@@ -6,6 +6,6 @@
 
 namespace util
 {
-  UTIL_API void BackupFile(const std::string& source, const std::string& destination = "");
-  UTIL_API void CopyFile_(const std::string& source, const std::string& destination);
+  UTIL_API void BackupFile(const std::string& src, const std::string& dst = "");
+  UTIL_API void CopyFile_(const std::string& src, const std::string& dst);
 }

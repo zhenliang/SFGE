@@ -7,9 +7,9 @@ void ScriptManager::DoString( const std::string& str )
 void ScriptManager::DoFile( const std::string& path )
 {
   if (luaL_dofile(luaState_, path.c_str()))
-    std::cout<<"fail "<<path<<std::endl;
+    util::Logger::GetInstance().Log("fail " + path);
   else 
-    std::cout<<"ok "<<path<<std::endl;
+    util::Logger::GetInstance().Log("ok " + path);
 }
 
 void ScriptManager::RegisterFunc(const std::string& name, lua_CFunction func)

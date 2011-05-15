@@ -66,9 +66,9 @@ namespace util
     }
 
     template <class T>
-    void operator()(T& pair) const
+    void operator()(T& e) const
     {
-      Update(pair.second);
+      Update(e.second);
     }
 
     float delta_;

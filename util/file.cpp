@@ -3,22 +3,24 @@
 #include <iostream>
 #include <fstream>
 
+#include "logger.h"
+
 namespace util
 {
-  void BackupFile(const std::string& source, const std::string& destination /*= ""*/)
+  void BackupFile(const std::string& src, const std::string& dst /*= ""*/)
   {
-    std::ifstream ifs(source.c_str());
-    std::string backupPath = destination.empty() ? source + ".bak" : destination;
+    std::ifstream ifs(src.c_str());
+    std::string backupPath = dst.empty() ? src + ".bak" : dst;
     std::ofstream ofs(backupPath.c_str());
     ofs << ifs.rdbuf();
-    std::cout<<"ok backup "<<source<<std::endl;
+    Logger::GetInstance().Log("ok backup " + src);
   }
 
-  void CopyFile_(const std::string& source, const std::string& destination)
+  void CopyFile_(const std::string& src, const std::string& dst)
   {
-    std::ifstream ifs(source.c_str(), std::fstream::binary | std::fstream::in);
-    std::ofstream ofs(destination.c_str(), std::fstream::binary | std::fstream::out);
+    std::ifstream ifs(src.c_str(), std::fstream::binary | std::fstream::in);
+    std::ofstream ofs(dst.c_str(), std::fstream::binary | std::fstream::out);
     ofs << ifs.rdbuf();
-    std::cout<< "ok copy "<<source<<std::endl;
+    Logger::GetInstance().Log("ok copy " + src);
   }
 }

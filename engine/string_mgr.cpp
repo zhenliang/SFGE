@@ -2,7 +2,9 @@
 
 #include <fstream>
 #include <iostream>
+
 #include <util\container.h>
+#include <util\logger.h>
 #include <util\string.h>
 
 bool StringManager::AddString(const std::string& key, const std::wstring& value,
@@ -29,7 +31,7 @@ bool StringManager::AddStrings(const std::string& path)
 		std::ifstream ifstream(path.c_str());
 		if (ifstream.is_open())
 		{
-			std::cout<<path<<" :"<<std::endl;
+      util::Logger::GetInstance().Log("ok opened " + path);
 
 			while (ifstream.get(key, MAX_KEY_LENGHT, ' '))
 			{
@@ -39,12 +41,11 @@ bool StringManager::AddStrings(const std::string& path)
 				std::wstring wval = util::S2WS(val);
 				AddString(key, wval);
 
-				std::cout<<key<<std::ends;
-				std::cout<<val<<std::endl;
+        util::Logger::GetInstance().Log(key + std::string(" ") + val);
 			}
 		}
 		else
-			std::cout<<"Cant not opened file: "<<path<<std::endl;
+      util::Logger::GetInstance().Log("Cant not opened file: " + path);
 	}
 
 	return true;

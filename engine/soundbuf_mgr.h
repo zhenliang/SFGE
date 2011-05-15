@@ -10,8 +10,8 @@ public:
   SoundbufManager() {}
   virtual ~SoundbufManager() {}
 
-  bool LoadSoundbuf(std::string path, std::string key);
-  SoundBuffer& GetSoundbuf(std::string key);
+  bool LoadSoundbuf(const std::string& path, const std::string& key);
+  SoundBuffer& GetSoundbuf(const std::string& key);
 
 private:
   typedef std::map<std::string, SoundBuffer> Soundbufs;

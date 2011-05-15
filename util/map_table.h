@@ -12,8 +12,8 @@ namespace util
     MapTable() {}
     virtual ~MapTable() {}
 
-    bool AddItem(Key key, Value& value);
-    Value& GetItem(Key key);
+    bool AddItem(const Key& key, const Value& value);
+    Value& GetItem(const Key& key);
 
   protected:
     typedef std::map<Key, Value> Items;

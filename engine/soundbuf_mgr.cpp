@@ -2,7 +2,7 @@
 
 #include <util\container.h>
 
-bool SoundbufManager::LoadSoundbuf(std::string path, std::string key)
+bool SoundbufManager::LoadSoundbuf(const std::string& path, const std::string& key)
 {
   SoundBuffer buf;
   if (!buf.LoadFromFile(path))
@@ -10,7 +10,7 @@ bool SoundbufManager::LoadSoundbuf(std::string path, std::string key)
   return util::Insert(soundbufs_, std::make_pair(key, buf));
 }
 
-SoundBuffer& SoundbufManager::GetSoundbuf( std::string key )
+SoundBuffer& SoundbufManager::GetSoundbuf(const std::string& key)
 {
   if (util::Contain(soundbufs_, key))
     return soundbufs_[key];

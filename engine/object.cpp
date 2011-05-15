@@ -14,7 +14,7 @@ Object::~Object()
 
 }
 
-void Object::Update( float delta )
+void Object::Update(float delta)
 {
   if (dead_)
     return;
@@ -22,7 +22,7 @@ void Object::Update( float delta )
   OnUpdate(delta);
 }
 
-void Object::Render( RenderTarget& target )
+void Object::Render(RenderTarget& target)
 {
   if (dead_)
     return;

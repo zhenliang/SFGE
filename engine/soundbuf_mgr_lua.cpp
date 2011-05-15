@@ -11,7 +11,7 @@ luaL_Reg kSoundbufMgrLib[] =
   {NULL, NULL}
 };
 
-int LoadSoundbuf( lua_State* L )
+int LoadSoundbuf(lua_State* L)
 {
   std::string path = lua_tostring(L, 1);
   std::string key = lua_tostring(L, 2);
@@ -20,7 +20,7 @@ int LoadSoundbuf( lua_State* L )
   return 1;
 }
 
-int GetSoundbuf( lua_State* L )
+int GetSoundbuf(lua_State* L)
 {
   std::string key = lua_tostring(L, 1);
   SoundBuffer& buf = SoundbufManager::GetInstance().GetSoundbuf(key);

@@ -20,6 +20,24 @@ int LoadImage(lua_State* L)
   return 1;
 }
 
+int GetImage(lua_State* L)
+{
+  std::string key = lua_tostring(L, 1);
+
+#if 1
+  Image** boxptr = static_cast<Image**>(lua_newuserdata(L, sizeof(Image*)));
+  *boxptr = &ImageManager::GetInstance().GetImage(key);
+#else // lua_boxpointer
+  Image* image = &ImageManager::GetInstance().GetImage(key);
+  *(void**)(lua_newuserdata(L, sizeof(void*))) = image;
+#endif
+
+  luaL_getmetatable(L, LuaImage::className_);
+  lua_setmetatable(L, -2);
+
+  return 1;
+}
+
 #define METHOD(class, name) { #name, class::name }
 
 const char* LuaImage::className_ = "Image";
@@ -73,22 +91,4 @@ void LuaImage::Register(lua_State* L)
 int LuaImage::GC(lua_State* L)
 {
   return 0;
-}
-
-int GetImage(lua_State* L)
-{
-  std::string key = lua_tostring(L, 1);
-
-#if 1
-  Image** boxptr = static_cast<Image**>(lua_newuserdata(L, sizeof(Image*)));
-  *boxptr = &ImageManager::GetInstance().GetImage(key);
-#else // lua_boxpointer
-  Image* image = &ImageManager::GetInstance().GetImage(key);
-  *(void**)(lua_newuserdata(L, sizeof(void*))) = image;
-#endif
-  
-  luaL_getmetatable(L, LuaImage::className_);
-  lua_setmetatable(L, -2);
-
-  return 1;
 }

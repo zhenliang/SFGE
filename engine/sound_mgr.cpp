@@ -20,7 +20,7 @@ bool SoundManager::RegisterSound(const std::string& soundKey, const std::string&
 
 void SoundManager::PlaySound(const std::string& soundKey, bool loop /*= false*/, 
                              float pitch /*= 1.f*/, float volume /*= 100.f*/, 
-                             const Vector3f& position /*= Vector3f(0., 0., 0.)*/)
+                             const Vector3f& position /*= Vector3f(0.f, 0.f, 0.f)*/)
 {
   EraseStoppedSounds();
 

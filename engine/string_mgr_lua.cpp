@@ -13,7 +13,7 @@ luaL_Reg kStringMgrLib[] =
   {NULL, NULL}
 };
 
-int AddString( lua_State* L )
+int AddString(lua_State* L)
 {
   bool result = false;
 
@@ -45,7 +45,7 @@ int AddString( lua_State* L )
   return 1;
 }
 
-int GetString( lua_State* L )
+int GetString(lua_State* L)
 {
   // TODO: 需要的时候实现它
   std::cout<<"StringManager::GetString() is currently not implemented.";

@@ -15,6 +15,7 @@ namespace util
     , loglevel_(LL_INFO)
     , logfile_(kDefaultFile)
     , outstream_()
+    , logbuf_()
   {
 
   }
@@ -46,11 +47,26 @@ namespace util
 
     outstream_.open(logfile_.c_str());
     assert(outstream_.is_open());
+
+    Log("set logfile: " + val);
   }
 
   void Logger::SetLogMode(int val)
   {
     logMode_ = val & LM_ALL;
     assert(logMode_ & LM_ALL);
+
+    LogBegin();
+    (*this) << "set log mode: " << logMode_;
+    LogEnd();
+  }
+
+  void Logger::SetLoglevel(int val)
+  {
+    loglevel_ = val;
+    
+    LogBegin();
+    (*this) << "set log level: " << loglevel_;
+    LogEnd();
   }
 }
