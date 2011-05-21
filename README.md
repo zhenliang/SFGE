@@ -19,4 +19,5 @@ Dependices
 
 Note
 ----------
+- it's a personal project for study purpose, there are no documents and code comments
 - currently for windows only
