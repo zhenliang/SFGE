@@ -47,7 +47,7 @@ int AddString(lua_State* L)
 
 int GetString(lua_State* L)
 {
-  // TODO: 需要的时候实现它
+  // TODO: 闇�瑕佺殑鏃跺�欏疄鐜板畠
   std::cout<<"StringManager::GetString() is currently not implemented.";
   return 0;
 }

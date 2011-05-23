@@ -20,7 +20,7 @@ enum UITypes
   UIT_End
 };
 
-// UI 管理器，尚需研究，未实现
+// UI 绠＄悊鍣紝灏氶渶鐮旂┒锛屾湭瀹炵幇
 
 class ENGINE_API UIManager : public util::IGetInstance<UIManager>
 {

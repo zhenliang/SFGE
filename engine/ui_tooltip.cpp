@@ -12,9 +12,9 @@ namespace UITooltip
     Sprite background_;
     bool emptyTip_ = true;
 
-    float setTime; // ¼ÇÂ¼ÉèÖÃµÄÊ±¼ä£¬ÓÃÓÚÑÓ³¤ÏÔÊ¾
-    float delayTime = kTooptipDelayTime; // ÑÓ³Ù³öÏÖÊ±¼ä
-    float fadeInTime = kTooptipFadeinTime; // µ­Èë¹ı³ÌÊ±¼ä³¤¶È
+    float setTime; // è®°å½•è®¾ç½®çš„æ—¶é—´ï¼Œç”¨äºå»¶é•¿æ˜¾ç¤º
+    float delayTime = kTooptipDelayTime; // å»¶è¿Ÿå‡ºç°æ—¶é—´
+    float fadeInTime = kTooptipFadeinTime; // æ·¡å…¥è¿‡ç¨‹æ—¶é—´é•¿åº¦
 
     const float BACKGROUND_EXPEND_SIZE_X = 10.0f;
     const float BACKGROUND_EXPEND_SIZE_Y = 8.0f;
@@ -31,11 +31,11 @@ namespace UITooltip
     tip_ = tip;
     emptyTip_ = String_IsEmpty(tip);
 
-    // ÉèÖÃÎ»ÖÃ
+    // è®¾ç½®ä½ç½®
 
     tip_.SetPosition(left + BACKGROUND_EXPEND_SIZE_X, top + BACKGROUND_EXPEND_SIZE_Y);
 
-    // ÉèÖÃ±³¾°µÄ´óĞ¡£¬Èç¹ûÊÇ·ÇÍ¼Æ¬±³¾°£¬ÔòÍ¬Ê±ÉèÖÃÆä±³¾°ÑÕÉ«
+    // è®¾ç½®èƒŒæ™¯çš„å¤§å°ï¼Œå¦‚æœæ˜¯éå›¾ç‰‡èƒŒæ™¯ï¼Œåˆ™åŒæ—¶è®¾ç½®å…¶èƒŒæ™¯é¢œè‰²
 
     float width = tip_.GetRect().GetWidth() + BACKGROUND_EXPEND_SIZE_X * 2;
     float height = tip_.GetRect().GetHeight() + BACKGROUND_EXPEND_SIZE_Y * 2;
@@ -44,7 +44,7 @@ namespace UITooltip
     if (background_.GetImage() == NULL)
       background_.SetColor(EMPTY_BACKGROUND_DEFAULT_COL);
 
-    // ¼ÇÂ¼ÉèÖÃÊ±¼ä
+    // è®°å½•è®¾ç½®æ—¶é—´
 
     setTime = static_cast<float>(clock());
   }

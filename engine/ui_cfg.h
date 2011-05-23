@@ -1,4 +1,4 @@
 #pragma once
 
-extern float kTooptipDelayTime; // Tooltip ¿ªÊ¼µ­Èë¶îµÄÊ±¼ä
-extern float kTooptipFadeinTime; // Tooltip µ­Èë¹ı³ÌµÄÊ±¼ä
+extern float kTooptipDelayTime; // Tooltip å¼€å§‹æ·¡å…¥é¢çš„æ—¶é—´
+extern float kTooptipFadeinTime; // Tooltip æ·¡å…¥è¿‡ç¨‹çš„æ—¶é—´

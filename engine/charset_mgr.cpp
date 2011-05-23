@@ -7,18 +7,18 @@
 
 bool CharsetManager::AddCharset(const std::string& key, const std::string& charset)
 {	
-  // ÌáÈ¡·ÇÖØ¸´×Ö·û
+  // æå–éé‡å¤å­—ç¬¦
 
-  std::wstring wcharset = util::S2WS(charset); // ×ª¿í×Ö·û
-  std::sort(wcharset.begin(), wcharset.end()); // ÅÅĞò
-  std::wstring::iterator i = std::unique(wcharset.begin(), wcharset.end()); // ÌŞ³ıÖØ¸´×Ö·û
-  wcharset.erase(i, wcharset.end()); // É¾³ı·ÏÆú×Ö·û
+  std::wstring wcharset = util::S2WS(charset); // è½¬å®½å­—ç¬¦
+  std::sort(wcharset.begin(), wcharset.end()); // æ’åº
+  std::wstring::iterator i = std::unique(wcharset.begin(), wcharset.end()); // å‰”é™¤é‡å¤å­—ç¬¦
+  wcharset.erase(i, wcharset.end()); // åˆ é™¤åºŸå¼ƒå­—ç¬¦
 
-  // Êä³öÌáÈ¡³öÀ´µÄ×Ö·û´®£¨×¢Òâ std::wcout<<wcharset ÊÇÎŞ·¨Êä³öºº×ÖµÄ£¬´ıÑĞ¾¿£©
+  // è¾“å‡ºæå–å‡ºæ¥çš„å­—ç¬¦ä¸²ï¼ˆæ³¨æ„ std::wcout<<wcharset æ˜¯æ— æ³•è¾“å‡ºæ±‰å­—çš„ï¼Œå¾…ç ”ç©¶ï¼‰
 
   std::cout<<util::WS2S(wcharset)<<std::endl;
 
-  // ´æÈë¹ÜÀíÆ÷
+  // å­˜å…¥ç®¡ç†å™¨
 
   return util::Insert(charsets_, std::make_pair(key, Unicode::Text(wcharset)));
 }

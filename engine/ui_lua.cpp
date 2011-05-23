@@ -282,7 +282,7 @@ int Window_( lua_State* L )
 
   AddWidget(L, window);
 
-  // ���ùرհ�ť
+  // 配置关闭按钮
 
   if (util::HasField(L, "closeBtn"))
   {

@@ -1,26 +1,26 @@
 
-// Ö§³ÖÒÔºêÎª²ÎÊýµÄÆ´½Ó
+// æ”¯æŒä»¥å®ä¸ºå‚æ•°çš„æ‹¼æŽ¥
 
 #define COMBINE_(a, b)          COMBINE_IMPL_(a, b)
 #define COMBINE_IMPL_(a, b)     a##b
 
 
-// ´úÀí½Ó¿Ú
+// ä»£ç†æŽ¥å£
 
 #define I_DELEGATE_             COMBINE_(IDelegate, SUFFIX_)
 
-// ´úÀíÊµÏÖ
+// ä»£ç†å®žçŽ°
 
 #define FUNC_DELEGATE_          COMBINE_(FuncDelegate, SUFFIX_)
 #define METHOD_DELEGATE_        COMBINE_(MethodDelegate, SUFFIX_)
 #define FUNCTOR_DELEGATE_       COMBINE_(FunctorDelegate, SUFFIX_)
 
-// µ¥´úÀí£¬¶à´úÀí£¬Êµ¼ÊÊ¹ÓÃµÄ¶ÔÏó£¬±£´æÒ»¸ö»ò¶à¸ö´úÀíÊµÏÖ
+// å•ä»£ç†ï¼Œå¤šä»£ç†ï¼Œå®žé™…ä½¿ç”¨çš„å¯¹è±¡ï¼Œä¿å­˜ä¸€ä¸ªæˆ–å¤šä¸ªä»£ç†å®žçŽ°
 
 #define DELEGATE_               COMBINE_(Delegate, SUFFIX_)
 #define MULTI_DELEGATE_         COMBINE_(MultiDelegate, SUFFIX_)
 
-// ´úÀí½Ó¿Ú
+// ä»£ç†æŽ¥å£
 
 TEMPLATE_ TEMPLATE_PARAMS_
 class I_DELEGATE_
@@ -33,7 +33,7 @@ public:
 };
 
 
-// º¯Êý´úÀí£¨Ò»°ãº¯ÊýºÍÀà¾²Ì¬º¯Êý£©
+// å‡½æ•°ä»£ç†ï¼ˆä¸€èˆ¬å‡½æ•°å’Œç±»é™æ€å‡½æ•°ï¼‰
 
 TEMPLATE_ TEMPLATE_PARAMS_
 class FUNC_DELEGATE_ : public I_DELEGATE_ TEMPLATE_ARGS_
@@ -61,7 +61,7 @@ private:
   Func func_;
 };
 
-// ·Ç¾²Ì¬Ààº¯Êý´úÀí£¨¼´µ÷ÓÃÔ¼¶¨Îª __thiscall µÄº¯Êý£©
+// éžé™æ€ç±»å‡½æ•°ä»£ç†ï¼ˆå³è°ƒç”¨çº¦å®šä¸º __thiscall çš„å‡½æ•°ï¼‰
 
 template CLASS_TEMPLATE_PARAMS_
 class METHOD_DELEGATE_ : public I_DELEGATE_ TEMPLATE_ARGS_
@@ -91,7 +91,7 @@ private:
   Method method_;
 };
 
-// ·Âº¯Êý´úÀí£¨´úÀí¿½±´Õû¸ö·Âº¯Êý£©
+// ä»¿å‡½æ•°ä»£ç†ï¼ˆä»£ç†æ‹·è´æ•´ä¸ªä»¿å‡½æ•°ï¼‰
 
 template CLASS_TEMPLATE_PARAMS_
 class FUNCTOR_DELEGATE_ : public I_DELEGATE_ TEMPLATE_ARGS_
@@ -106,7 +106,7 @@ public:
 
   virtual void Invoke(PARAMS_) { (obj_.*method_)(ARGS_); }
 
-  // ´Ë´úÀí±£´æµÄÊÇº¯Êý¶ÔÏóµÄÒ»·Ý¿½±´£¬¹Ê²»´æÔÚÏàµÈµÄÁ½·Ý´úÀí£¬Equal ÓÀÔ¶·µ»Ø false
+  // æ­¤ä»£ç†ä¿å­˜çš„æ˜¯å‡½æ•°å¯¹è±¡çš„ä¸€ä»½æ‹·è´ï¼Œæ•…ä¸å­˜åœ¨ç›¸ç­‰çš„ä¸¤ä»½ä»£ç†ï¼ŒEqual æ°¸è¿œè¿”å›ž false
 
   virtual bool Equal(I_DELEGATE_ TEMPLATE_ARGS_* other) const { return false; }
 
@@ -116,7 +116,7 @@ private:
 };
 
 
-// µ¥´úÀí£¬Êµ¼ÊÖÐÊ¹ÓÃµÄ¶ÔÏó
+// å•ä»£ç†ï¼Œå®žé™…ä¸­ä½¿ç”¨çš„å¯¹è±¡
 
 TEMPLATE_ TEMPLATE_PARAMS_
 class DELEGATE_
@@ -126,7 +126,7 @@ public:
 
   DELEGATE_() : delegate_() {}
 
-  // »á×ªÒÆ other µÄËùÓÐÈ¨µ½±¾¶ÔÏó
+  // ä¼šè½¬ç§» other çš„æ‰€æœ‰æƒåˆ°æœ¬å¯¹è±¡
 
   DELEGATE_(const DELEGATE_ TEMPLATE_ARGS_ & other)
   {
@@ -143,7 +143,7 @@ public:
     return *this;
   }
 
-  // »á×ªÒÆ other µÄËùÓÐÈ¨µ½±¾¶ÔÏó
+  // ä¼šè½¬ç§» other çš„æ‰€æœ‰æƒåˆ°æœ¬å¯¹è±¡
 
   DELEGATE_ TEMPLATE_ARGS_& operator = (const DELEGATE_ TEMPLATE_ARGS_ & other)
   {
@@ -175,7 +175,7 @@ private:
   IDelegate* delegate_;
 };
 
-// ¶à´úÀí£¬Êµ¼ÊÖÐÊ¹ÓÃµÄ¶ÔÏó
+// å¤šä»£ç†ï¼Œå®žé™…ä¸­ä½¿ç”¨çš„å¯¹è±¡
 
 TEMPLATE_ TEMPLATE_PARAMS_
 class MULTI_DELEGATE_
@@ -280,7 +280,7 @@ private:
   Delegates elegates_;
 };
 
-// New Ò»¸öº¯Êý´úÀí£¬·µ»Ø IDelegateX ½Ó¿Ú
+// New ä¸€ä¸ªå‡½æ•°ä»£ç†ï¼Œè¿”å›ž IDelegateX æŽ¥å£
 // NewDelegate(func)
 // NewDelegate(class::static_method)
 
@@ -290,7 +290,7 @@ inline I_DELEGATE_ TEMPLATE_ARGS_ * NewDelegate(void (*func)(PARAMS_))
   return new FUNC_DELEGATE_ TEMPLATE_ARGS_ (func);
 }
 
-// New Ò»¸ö·Ç¾²Ì¬³ÉÔ±º¯Êý´úÀí£¬·µ»Ø IDelegateX ½Ó¿Ú
+// New ä¸€ä¸ªéžé™æ€æˆå‘˜å‡½æ•°ä»£ç†ï¼Œè¿”å›ž IDelegateX æŽ¥å£
 // NewDelegate(&obj, &class::method)
 
 template CLASS_TEMPLATE_PARAMS_
@@ -299,7 +299,7 @@ inline I_DELEGATE_ TEMPLATE_ARGS_ * NewDelegate(T* obj, void (T::*method)(PARAMS
   return new METHOD_DELEGATE_ CLASS_TEMPLATE_ARGS_ (*obj, method);
 }
 
-// New Ò»¸ö·Âº¯Êý´úÀí£¬·µ»Ø IDelegateX ½Ó¿Ú
+// New ä¸€ä¸ªä»¿å‡½æ•°ä»£ç†ï¼Œè¿”å›ž IDelegateX æŽ¥å£
 // NewDelegate(obj, &class::method)
 
 template CLASS_TEMPLATE_PARAMS_

@@ -7,12 +7,12 @@
 
 TEST(Foreach)
 {
-  // ���� UTIL_FOREACH �Ƿ��ܹ�����һ������
+  // 测试 UTIL_FOREACH 是否能够遍历一个容器
 
   std::vector<int> vec;
-  vec.resize(99, 1); // 99 ��ֵΪ 1 ��Ԫ��
+  vec.resize(99, 1); // 99 个值为 1 的元素
 
-  // ͳ��ִ�еĴ������ۼӸ���Ԫ��ֵ
+  // 统计执行的次数并累加各个元素值
 
   int cnt = 0;
   int sum = 0;
@@ -28,12 +28,12 @@ TEST(Foreach)
 
 TEST(ConstForeach)
 {
-  // ���� UTIL_CONST_FOREACH �Ƿ��ܹ�����һ������
+  // 测试 UTIL_CONST_FOREACH 是否能够遍历一个容器
 
   std::vector<int> vec;
-  vec.resize(99, 1); // 99 ��ֵΪ 1 ��Ԫ��
+  vec.resize(99, 1); // 99 个值为 1 的元素
 
-  // ͳ��ִ�еĴ������ۼӸ���Ԫ��ֵ
+  // 统计执行的次数并累加各个元素值
 
   int cnt = 0;
   int sum = 0;

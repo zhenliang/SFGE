@@ -2,9 +2,9 @@
 
 #include "ui_widget.h"
 
-// �� SetWidthHeight ��ʱ���������һ��Ϊ 0 ��������⽫�𲻵����á�
-// ��Ϊ���ڼ��ľ����Ѿ���Ϊֱ�ߣ����� label �� SetWidthHeight ���������壬
-// Width Ϊ���εĳ���Height Ϊ���εĳ�������� size ��С
+// 当 SetWidthHeight 的时候，如果其中一个为 0 ，则点击检测将起不到作用。
+// 因为用于检测的矩形已经成为直线，所以 label 的 SetWidthHeight 有两个意义，
+// Width 为矩形的长，Height 为矩形的长河字体的 size 大小
 
 class ENGINE_API UILabel : public UIWidget
 {
@@ -28,8 +28,8 @@ public:
     virtual void OnMouseLeft();
     virtual void OnPressed();
 
-    // �����������ʱ�� Style ������껮����ʱ������ᱻ������������ָ�
-    // Ĭ��Ϊ -1 ����ʾ��껮�뻮��ʱ��������
+    // 设置鼠标悬挂时的 Style ，当鼠标划出的时候其风格会被撤销，划入则恢复
+    // 默认为 -1 ，表示鼠标划入划出时不做操作
     void SetHoveredStyle(int style);
 
 private:

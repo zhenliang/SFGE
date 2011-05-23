@@ -15,7 +15,7 @@ namespace util
   UTIL_API bool HasField(lua_State* L, const std::string& key);
   UTIL_API bool HasField(lua_State* L, int index, const std::string& key);
 
-  // TODO: GetField 系列功能增强，添加设置默认返回值的参数
+  // TODO: GetField 绯诲垪鍔熻兘澧炲己锛屾坊鍔犺缃粯璁よ繑鍥炲�肩殑鍙傛暟
 
   UTIL_API bool GetField_Boolean(lua_State* L, int key);
   UTIL_API bool GetField_Boolean(lua_State* L, int index, int key);

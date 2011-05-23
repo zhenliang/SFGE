@@ -1,6 +1,6 @@
 #pragma once
 
-// ήπΖϊµΔ΄ϊΒλ
+// ζ‘’εΌƒη„δ»£η 
 
 #define CRTDBG_MAP_ALLOC
 #include <stdlib.h>

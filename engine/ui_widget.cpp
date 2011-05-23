@@ -48,7 +48,7 @@ UIWidget::UIWidget()
 
 UIWidget::~UIWidget()
 {
-  // TODO: DLL ÄÚ´æ¿Õ¼äÎÊÌâ
+  // TODO: DLL å†…å­˜ç©ºé—´é—®é¢˜
 
 #if 0
   delete onMouseEnter_;
@@ -65,16 +65,16 @@ void UIWidget::Update( float delta )
   if (!enabled_ || !visibled_)
     return;
 
-  // ¸üĞÂ×Ó½Úµã
+  // æ›´æ–°å­èŠ‚ç‚¹
 
   util::Vist(widgets_, util::UpdateVisitor_Second(delta));
 
-  // ¸üĞÂ×Ó½ÚµãÊ±ºó¿ÉÄÜÁîµ½×Ô¼ºµÄ×´Ì¬¸Ä±ä£¬ËùÒÔÔÙ´ÎÅĞ¶Ï
+  // æ›´æ–°å­èŠ‚ç‚¹æ—¶åå¯èƒ½ä»¤åˆ°è‡ªå·±çš„çŠ¶æ€æ”¹å˜ï¼Œæ‰€ä»¥å†æ¬¡åˆ¤æ–­
 
   if (!enabled_ || !visibled_)
     return;
 
-  // ¸üĞÂ×ÔÉí
+  // æ›´æ–°è‡ªèº«
 
   const InputManager& input = InputManager::GetInstance();
 
@@ -84,21 +84,21 @@ void UIWidget::Update( float delta )
   if (util::InRect(mx, my, topLeft_.x, topLeft_.y, topLeft_.x + widthHeight_.x,
     topLeft_.y + widthHeight_.y))
   { 
-    // Êó±ê¸Õ½øÈë
+    // é¼ æ ‡åˆšè¿›å…¥
     if (!hovered_)
     {
       OnMouseEnter();
       return;
     }
 
-    // Êó±ê°´ÏÂ
+    // é¼ æ ‡æŒ‰ä¸‹
     if (input.IsMouseButtonDown(Mouse::Left))
     {
       OnPressed();
       return;
     }
 
-    // Êó±êËÉ¿ª
+    // é¼ æ ‡æ¾å¼€
     if (pressed_ && input.IsMouseButtonReleased(Mouse::Left))
     {
       OnReleased();
@@ -107,7 +107,7 @@ void UIWidget::Update( float delta )
   }
   else
   {
-    // Êó±ê¸ÕÒÆ³ö
+    // é¼ æ ‡åˆšç§»å‡º
     if (hovered_)
     {
       OnMouseLeft();
@@ -126,8 +126,8 @@ void UIWidget::Render( RenderTarget& target ) const
   if (drawDebugShape_)
     target.Draw(debugShape_);
 
-  // µ±Êó±êĞü¸¡£¬²¢ÇÒ×Ô¼ºµÄ tooltip ²»Îª¿ÕµÄÊ±ºò²ÅäÖÈ¾
-  // Èç¹û×Ô¼ºÎª¿ÕÒÀÈ»äÖÈ¾£¬¿ÉÄÜ»áÆÁ±ÎµôÆäËüÔª¼şµÄ tooltip
+  // å½“é¼ æ ‡æ‚¬æµ®ï¼Œå¹¶ä¸”è‡ªå·±çš„ tooltip ä¸ä¸ºç©ºçš„æ—¶å€™æ‰æ¸²æŸ“
+  // å¦‚æœè‡ªå·±ä¸ºç©ºä¾ç„¶æ¸²æŸ“ï¼Œå¯èƒ½ä¼šå±è”½æ‰å…¶å®ƒå…ƒä»¶çš„ tooltip
 
   if (hovered_ && !String_IsEmpty(tooltip_))
     UITooltip::Draw(target);

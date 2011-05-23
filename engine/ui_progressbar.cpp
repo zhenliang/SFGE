@@ -72,7 +72,7 @@ void UIProgressbar::UpdateMidAnim()
 
   Vector2f size = GetWidthHeight();
   size.x *= curValue_ / maxValue_;
-  size.x = util::ClamUp(size.x, 1.f); // 下限 1 像素，size.x <= 0 则在 SFML 内部不作处理
+  size.x = util::ClamUp(size.x, 1.f); // 涓嬮檺 1 鍍忕礌锛宻ize.x <= 0 鍒欏湪 SFML 鍐呴儴涓嶄綔澶勭悊
   anims_[MID_ANIM_].Resize(size);
 }
 

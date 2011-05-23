@@ -4,9 +4,9 @@
 
 #include "engine.h"
 
-// ÓÃ·¨£º
-// ÔÚÃ¿Ö¡¶¼È¡µÃËùÓĞ Event £¬ÒÀ´Î´«Èë OnEvent º¯Êı
-// ĞèÒªÔÚÃ¿Ö¡µÄ½áÎ²µ÷ÓÃ EndUpdate()
+// ç”¨æ³•ï¼š
+// åœ¨æ¯å¸§éƒ½å–å¾—æ‰€æœ‰ Event ï¼Œä¾æ¬¡ä¼ å…¥ OnEvent å‡½æ•°
+// éœ€è¦åœ¨æ¯å¸§çš„ç»“å°¾è°ƒç”¨ EndUpdate()
 
 class ENGINE_API InputManager : public util::IGetInstance<InputManager> 
 {

@@ -23,7 +23,7 @@ void UIButton::Update( float delta )
   if (!visibled_)
     return;
 
-  // 更新对应状态的动画
+  // 鏇存柊瀵瑰簲鐘舵�佺殑鍔ㄧ敾
 
   if (!enabled_ && hasDisabledAnim_)
     anims_[DISABLED_ANIM_].Update(delta);
@@ -34,7 +34,7 @@ void UIButton::Update( float delta )
   else if (hasNormalAnim_)
     anims_[NORMAL_ANIM_].Update(delta);
 
-  // 鼠标悬挂与否时的缩放
+  // 榧犳爣鎮寕涓庡惁鏃剁殑缂╂斁
 
   if (hoveredMaxScale_ != -1.0f && hasNormalAnim_)
   {
@@ -46,7 +46,7 @@ void UIButton::Update( float delta )
 
     if (hovered_)
     {
-      // 鼠标未按下与按下时的缩放
+      // 榧犳爣鏈寜涓嬩笌鎸変笅鏃剁殑缂╂斁
 
       if (!pressed_)
       {

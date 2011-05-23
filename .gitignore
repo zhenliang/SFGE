@@ -14,12 +14,15 @@ SFML-1.6
 man20s
 paul
 
+# misc projects
+temp
+
 # Miscs directories
 docs
 
 # VisualStudio files
-*.sln
+# *.sln
 *.ncb
 *.suo
-*.vcproj
+# *.vcproj
 *.user

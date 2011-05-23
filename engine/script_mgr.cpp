@@ -11,17 +11,17 @@
 
 namespace native_type_setters
 {
-  // ×¢Òâ£¬ËùÓĞ setter ¶¼Î´´¦ÀíÓĞÃ»ÓĞ·ûºÅ
+  // æ³¨æ„ï¼Œæ‰€æœ‰ setter éƒ½æœªå¤„ç†æœ‰æ²¡æœ‰ç¬¦å·
 
   int SetBool(lua_State* L)
   {
     void* adr = lua_touserdata(L, 1);
     bool val = lua_toboolean(L, 2);
-    *static_cast<bool*>(adr) = val; // ±ØĞëÊÇ¶ÔÓ¦Ö¸Õë£¬·ñÔò¸³Öµ²»ÕıÈ·£¬ÏÂÍ¬
+    *static_cast<bool*>(adr) = val; // å¿…é¡»æ˜¯å¯¹åº”æŒ‡é’ˆï¼Œå¦åˆ™èµ‹å€¼ä¸æ­£ç¡®ï¼Œä¸‹åŒ
     return 0;
   }
 
-  // ×¢Òâ´Ëº¯ÊıÔÚ lua ÄÚ±ØĞëÒÔÕûÊıÖµÀ´¸³Öµ£¬ÓÃ×Ö·û 'x' ¸³Öµ»á²»ÕıÈ·
+  // æ³¨æ„æ­¤å‡½æ•°åœ¨ lua å†…å¿…é¡»ä»¥æ•´æ•°å€¼æ¥èµ‹å€¼ï¼Œç”¨å­—ç¬¦ 'x' èµ‹å€¼ä¼šä¸æ­£ç¡®
 
   int SetChar(lua_State* L)
   {

@@ -6,7 +6,7 @@
 
 namespace util
 {	
-  // µİ¹é´òÓ¡Ò»¸öÈË±í
+  // é€’å½’æ‰“å°ä¸€ä¸ªäººè¡¨
 
   int PrintTable( lua_State* L )
   {
@@ -36,14 +36,14 @@ namespace util
     return 1;
   }
 
-  // ÔÚÕ»¶¥µÄ±íÊÇ·ñÓĞÄ³¸ö¼ü
+  // åœ¨æ ˆé¡¶çš„è¡¨æ˜¯å¦æœ‰æŸä¸ªé”®
 
   bool HasField( lua_State* L, int key )
   {
     return HasField(L, -1, key);
   }
 
-  // ÔÚÕ» index Î»ÖÃµÄ±íÊÇ·ñÓĞÄ³¸ö¼ü
+  // åœ¨æ ˆ index ä½ç½®çš„è¡¨æ˜¯å¦æœ‰æŸä¸ªé”®
 
   bool HasField(lua_State* L, int index, int key)
   {
@@ -55,14 +55,14 @@ namespace util
     return result;
   }
 
-  // ÔÚÕ»¶¥µÄ±íÊÇ·ñÓĞÄ³¸ö¼ü
+  // åœ¨æ ˆé¡¶çš„è¡¨æ˜¯å¦æœ‰æŸä¸ªé”®
 
   bool HasField( lua_State* L, const std::string& key )
   {
     return HasField(L, -1, key);
   }
 
-  // ÔÚÕ» index Î»ÖÃµÄ±íÊÇ·ñÓĞÄ³¸ö¼ü
+  // åœ¨æ ˆ index ä½ç½®çš„è¡¨æ˜¯å¦æœ‰æŸä¸ªé”®
 
   bool HasField(lua_State* L, int index, const std::string& key)
   {
@@ -82,7 +82,7 @@ namespace util
     int tableIndex = ToPositiveIndex(L, index);
     assert(lua_istable(L, tableIndex));
 
-    // »ñÈ¡½á¹û
+    // è·å–ç»“æœ
 
     lua_pushinteger(L, key);
     lua_gettable(L, tableIndex);
@@ -93,14 +93,14 @@ namespace util
     else if (lua_isnumber(L, -1))
       result = (lua_tonumber(L, -1) != 0.);
 
-    // ½á¹û³öÕ»£¬»¹Ô­Õ»
+    // ç»“æœå‡ºæ ˆï¼Œè¿˜åŸæ ˆ
 
     lua_pop(L, 1);
 
     return result;	
   }
 
-  // »ñÈ¡Õ»¶¥µÄ±íµÄ key µÄÖµ
+  // è·å–æ ˆé¡¶çš„è¡¨çš„ key çš„å€¼
 
   bool GetField_Boolean(lua_State* L, const std::string& key)
   {
@@ -112,7 +112,7 @@ namespace util
     int tableIndex = ToPositiveIndex(L, index);
     assert(lua_istable(L, tableIndex));
 
-    // »ñÈ¡½á¹û
+    // è·å–ç»“æœ
 
     lua_pushstring(L, key.c_str());
     lua_gettable(L, tableIndex);
@@ -123,7 +123,7 @@ namespace util
     else if (lua_isnumber(L, -1))
       result = (lua_tonumber(L, -1) != 0.);
 
-    // ½á¹û³öÕ»£¬»¹Ô­Õ»
+    // ç»“æœå‡ºæ ˆï¼Œè¿˜åŸæ ˆ
 
     lua_pop(L, 1);
 
@@ -156,7 +156,7 @@ namespace util
     return false;
   }
 
-  // »ñÈ¡Õ»¶¥µÄ±íµÄ key µÄÖµ
+  // è·å–æ ˆé¡¶çš„è¡¨çš„ key çš„å€¼
 
   int GetField_Integer( lua_State* L, int key )
   {
@@ -168,7 +168,7 @@ namespace util
     int tableIndex = ToPositiveIndex(L, index);
     assert(lua_istable(L, tableIndex));
 
-    // »ñÈ¡½á¹û
+    // è·å–ç»“æœ
 
     lua_pushinteger(L, key);
     lua_gettable(L, tableIndex);
@@ -177,14 +177,14 @@ namespace util
     if (lua_isnumber(L, -1))
       result = lua_tointeger(L, -1);
 
-    // ½á¹û³öÕ»£¬»¹Ô­Õ»
+    // ç»“æœå‡ºæ ˆï¼Œè¿˜åŸæ ˆ
 
     lua_pop(L, 1);
 
     return result;	
   }
 
-  // »ñÈ¡Õ»¶¥µÄ±íµÄ key µÄÖµ
+  // è·å–æ ˆé¡¶çš„è¡¨çš„ key çš„å€¼
 
   int GetField_Integer( lua_State* L, const std::string& key )
   {
@@ -196,7 +196,7 @@ namespace util
     int tableIndex = ToPositiveIndex(L, index);
     assert(lua_istable(L, tableIndex));
 
-    // »ñÈ¡½á¹û
+    // è·å–ç»“æœ
 
     lua_pushstring(L, key.c_str());
     lua_gettable(L, tableIndex);
@@ -205,7 +205,7 @@ namespace util
     if (lua_isnumber(L, -1))
       result = lua_tointeger(L, -1);
 
-    // ½á¹û³öÕ»£¬»¹Ô­Õ»
+    // ç»“æœå‡ºæ ˆï¼Œè¿˜åŸæ ˆ
 
     lua_pop(L, 1);
 
@@ -238,7 +238,7 @@ namespace util
     return int();
   }
 
-  // »ñÈ¡Õ»¶¥µÄ±íµÄ key µÄÖµ
+  // è·å–æ ˆé¡¶çš„è¡¨çš„ key çš„å€¼
 
   double GetField_Number(lua_State* L, int key)
   {
@@ -250,7 +250,7 @@ namespace util
     int tableIndex = ToPositiveIndex(L, index);
     assert(lua_istable(L, tableIndex));
 
-    // »ñÈ¡½á¹û
+    // è·å–ç»“æœ
 
     lua_pushinteger(L, key);
     lua_gettable(L, tableIndex);
@@ -259,14 +259,14 @@ namespace util
     if (lua_isnumber(L, -1))
       result = lua_tonumber(L, -1);
 
-    // ½á¹û³öÕ»£¬»¹Ô­Õ»
+    // ç»“æœå‡ºæ ˆï¼Œè¿˜åŸæ ˆ
 
     lua_pop(L, 1);
 
     return result;	
   }
 
-  // »ñÈ¡Õ»¶¥µÄ±íµÄ key µÄÖµ
+  // è·å–æ ˆé¡¶çš„è¡¨çš„ key çš„å€¼
 
   double GetField_Number(lua_State* L, const std::string& key)
   {
@@ -278,7 +278,7 @@ namespace util
     int tableIndex = ToPositiveIndex(L, index);
     assert(lua_istable(L, tableIndex));
 
-    // »ñÈ¡½á¹û
+    // è·å–ç»“æœ
 
     lua_pushstring(L, key.c_str());
     lua_gettable(L, tableIndex);
@@ -287,7 +287,7 @@ namespace util
     if (lua_isnumber(L, -1))
       result = lua_tonumber(L, -1);
 
-    // ½á¹û³öÕ»£¬»¹Ô­Õ»
+    // ç»“æœå‡ºæ ˆï¼Œè¿˜åŸæ ˆ
 
     lua_pop(L, 1);
 
@@ -320,7 +320,7 @@ namespace util
     return double();
   }
 
-  // »ñÈ¡Õ»¶¥µÄ±íµÄ key µÄÖµ
+  // è·å–æ ˆé¡¶çš„è¡¨çš„ key çš„å€¼
 
   std::string GetField_String(lua_State* L, const std::string& key)
   {
@@ -332,7 +332,7 @@ namespace util
     int tableIndex = ToPositiveIndex(L, index);
     assert(lua_istable(L, tableIndex));
 
-    // »ñÈ¡½á¹û
+    // è·å–ç»“æœ
 
     lua_pushstring(L, key.c_str());
     lua_gettable(L, tableIndex);
@@ -341,7 +341,7 @@ namespace util
     if (lua_isstring(L, -1))
       result = lua_tostring(L, -1);
 
-    // ½á¹û³öÕ»£¬»¹Ô­Õ»
+    // ç»“æœå‡ºæ ˆï¼Œè¿˜åŸæ ˆ
 
     lua_pop(L, 1);
 
@@ -358,7 +358,7 @@ namespace util
     int tableIndex = ToPositiveIndex(L, index);
     assert(lua_istable(L, tableIndex));
 
-    // »ñÈ¡½á¹û
+    // è·å–ç»“æœ
 
     lua_pushinteger(L, key);
     lua_gettable(L, tableIndex);
@@ -367,7 +367,7 @@ namespace util
     if (lua_isstring(L, -1))
       result = lua_tostring(L, -1);
 
-    // ½á¹û³öÕ»£¬»¹Ô­Õ»
+    // ç»“æœå‡ºæ ˆï¼Œè¿˜åŸæ ˆ
 
     lua_pop(L, 1);
 
@@ -400,7 +400,7 @@ namespace util
     return std::string();
   }
 
-  // »ñÈ¡Õ»¶¥µÄ±íµÄ key µÄÖµ
+  // è·å–æ ˆé¡¶çš„è¡¨çš„ key çš„å€¼
 
   void* GetField_LightUserdata(lua_State* L, const std::string& key)
   {
@@ -412,7 +412,7 @@ namespace util
     int tableIndex = ToPositiveIndex(L, index);
     assert(lua_istable(L, tableIndex));
 
-    // »ñÈ¡½á¹û
+    // è·å–ç»“æœ
 
     lua_pushstring(L, key.c_str());
     lua_gettable(L, tableIndex);
@@ -421,14 +421,14 @@ namespace util
     if (lua_islightuserdata(L, -1))
       result = lua_touserdata(L, -1);
 
-    // ½á¹û³öÕ»£¬»¹Ô­Õ»
+    // ç»“æœå‡ºæ ˆï¼Œè¿˜åŸæ ˆ
 
     lua_pop(L, 1);
 
     return result;
   }
 
-  // »ñÈ¡Õ»¶¥µÄ±íµÄ key µÄÖµ
+  // è·å–æ ˆé¡¶çš„è¡¨çš„ key çš„å€¼
 
   void* GetField_Userdata(lua_State* L, const std::string& key)
   {
@@ -440,7 +440,7 @@ namespace util
     int tableIndex = ToPositiveIndex(L, index);
     assert(lua_istable(L, tableIndex));
 
-    // »ñÈ¡½á¹û
+    // è·å–ç»“æœ
 
     lua_pushstring(L, key.c_str());
     lua_gettable(L, tableIndex);
@@ -449,7 +449,7 @@ namespace util
     if (lua_isuserdata(L, -1))
       result = lua_touserdata(L, -1);
 
-    // ½á¹û³öÕ»£¬»¹Ô­Õ»
+    // ç»“æœå‡ºæ ˆï¼Œè¿˜åŸæ ˆ
 
     lua_pop(L, 1);
 

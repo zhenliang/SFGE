@@ -2,7 +2,7 @@
 
 #include "ui_widget.h"
 
-// ¶ÔÓÚ UILine £¬SetTopLeft ºÍ SetWidthHeight ·Ö±ğÎªÉèÖÃÆğµãºÍÖÕµã
+// å¯¹äº UILine ï¼ŒSetTopLeft å’Œ SetWidthHeight åˆ†åˆ«ä¸ºè®¾ç½®èµ·ç‚¹å’Œç»ˆç‚¹
 
 class ENGINE_API UILine : public UIWidget
 {

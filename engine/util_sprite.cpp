@@ -12,7 +12,7 @@ void SetImage(Sprite& sprite, Image& img,
 {
   sprite.SetImage(img);
 
-  // Ã»Ìá¹© subRect Ôò°´Í¼Æ¬´óĞ¡À´ÉèÖÃ subRect
+  // æ²¡æä¾› subRect åˆ™æŒ‰å›¾ç‰‡å¤§å°æ¥è®¾ç½® subRect
 
   if (subRect.GetHeight() == 0)
     sprite.SetSubRect(IntRect(0.0f, 0.0f, img.GetWidth(), img.GetHeight()));

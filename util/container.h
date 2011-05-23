@@ -6,36 +6,36 @@
 
 namespace util
 {
-  // ÓÃ iterator ±éÀúÈİÆ÷
+  // ç”¨ iterator éå†å®¹å™¨
   #define UTIL_FOREACH(i, container, type) \
     for( type::iterator i = (container).begin(); i != (container).end(); ++i )
 
-  // ÓÃ const_iterator ±éÀúÈİÆ÷
+  // ç”¨ const_iterator éå†å®¹å™¨
   #define UTIL_CONST_FOREACH(i, container, type) \
     for( type::const_iterator i = (container).begin(); i != (container).end(); ++i )
 
-  // ÈİÆ÷Ô¼¶¨£º
-  // ÔªËØµÄÀàĞÍÎª Container::value_type
-  // ÔªËØ¼üÖµµÄÀàĞÍÎª Container::key_type £¬¼´ Container::value_type::first_type
-  // ÔªËØÓ³ÉäÖµµÄÀàĞÍÎª Container::mapped_type £¬¼´ Container::value_type::second_type
+  // å®¹å™¨çº¦å®šï¼š
+  // å…ƒç´ çš„ç±»å‹ä¸º Container::value_type
+  // å…ƒç´ é”®å€¼çš„ç±»å‹ä¸º Container::key_type ï¼Œå³ Container::value_type::first_type
+  // å…ƒç´ æ˜ å°„å€¼çš„ç±»å‹ä¸º Container::mapped_type ï¼Œå³ Container::value_type::second_type
 
-  // ±éÀúÈİÆ÷¸÷¸öÔªËØ£¬¶Ô¸÷¸öÔªËØµ÷ÓÃ Functor::operator()
+  // éå†å®¹å™¨å„ä¸ªå…ƒç´ ï¼Œå¯¹å„ä¸ªå…ƒç´ è°ƒç”¨ Functor::operator()
   template <class Container, class Functor>
   inline void Vist(Container& container, Functor& functor);
 
-  // ÅĞ¶ÏÈİÆ÷ÊÇ·ñ´æÔÚÒ»¸öÒÔ key Îª¼üÖµµÄÔªËØ
+  // åˆ¤æ–­å®¹å™¨æ˜¯å¦å­˜åœ¨ä¸€ä¸ªä»¥ key ä¸ºé”®å€¼çš„å…ƒç´ 
   template <class Container>
   inline bool Contain(Container& container, const typename Container::key_type& key);
 
-  // É¾³ıÈİÆ÷µÄ¼üÖµÎª key µÄÔªËØ
+  // åˆ é™¤å®¹å™¨çš„é”®å€¼ä¸º key çš„å…ƒç´ 
   template <class Container>
   inline bool Remove(Container& container, const typename Container::key_type& key);
 
-  // ÏòÈİÆ÷²åÈëÒ»¸öĞÂÔªËØ
+  // å‘å®¹å™¨æ’å…¥ä¸€ä¸ªæ–°å…ƒç´ 
   template <class Container>
   inline bool Insert(Container& container, const typename Container::value_type& value);
 
-  // »ñÈ¡µÚÒ»¸öÒÔ key Îª¼üÖµµÄÔªËØµÄÓ³ÉäÖµ
+  // è·å–ç¬¬ä¸€ä¸ªä»¥ key ä¸ºé”®å€¼çš„å…ƒç´ çš„æ˜ å°„å€¼
   template <class Container>
   inline typename Container::mapped_type& Get(
     Container& container, const typename Container::key_type& key);

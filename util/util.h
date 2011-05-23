@@ -3,12 +3,12 @@
 namespace util
 {
 
-// ʹ�ö�̬��汾
-// util ģ���趨�� UTIL_DYNAMIC �� _USRDLL
-// ʹ�� util ��ģ����Ҫ���� UTIL_DYNAMIC
+// 使用动态库版本
+// util 模块需定义 UTIL_DYNAMIC 和 _USRDLL
+// 使用 util 的模块需要定义 UTIL_DYNAMIC
 //
-// ʹ�þ�̬��汾
-// util ģ���ʹ�� util ��ģ�鶼���ܶ��� UTIL_DYNAMIC
+// 使用静态库版本
+// util 模块和使用 util 的模块都不能定义 UTIL_DYNAMIC
 
 #ifdef UTIL_DYNAMIC 
   #ifdef _USRDLL

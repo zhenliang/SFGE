@@ -9,7 +9,7 @@ namespace util
     template <class T>
     void operator()(T* e) const
     {
-      delete e; // 注意 DLL 内存空间问题
+      delete e; // 娉ㄦ剰 DLL 鍐呭瓨绌洪棿闂
     }
   };
 

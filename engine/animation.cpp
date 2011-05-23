@@ -48,13 +48,13 @@ void Animation::Update( float delta )
   {
     while (timeSinceLastFrame_ >= timePerFrame_)
     {
-#if 0 // ÕâÖÖ·½·¨ÔÚ timeSinceLastFrame ¹ı´óµÄÊ±ºò»áÕ¼ÓÃÌ«¶àÊ±¼ä
+#if 0 // è¿™ç§æ–¹æ³•åœ¨ timeSinceLastFrame è¿‡å¤§çš„æ—¶å€™ä¼šå ç”¨å¤ªå¤šæ—¶é—´
 
       timeSinceLastFrame_ -= timePerFrame_;
       if (++curFrame_ >= totalFrames_)
         curFrame_ = 0;
 
-#else // ÓÃ´¥·¢±ÜÃâÁË timeSiceLastFarm µÄĞÔÄÜËğÊ§£¬µ«ÔÚÍ¨³£Ê±ºò¶¼±ÈµÚÒ»ÖÖ·½·¨ºÄÊ±¶à
+#else // ç”¨è§¦å‘é¿å…äº† timeSiceLastFarm çš„æ€§èƒ½æŸå¤±ï¼Œä½†åœ¨é€šå¸¸æ—¶å€™éƒ½æ¯”ç¬¬ä¸€ç§æ–¹æ³•è€—æ—¶å¤š
 
       int cnt = timeSinceLastFrame_ / timePerFrame_;
       timeSinceLastFrame_ -= cnt * timePerFrame_;
