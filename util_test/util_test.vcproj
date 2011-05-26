@@ -173,6 +173,10 @@
 				RelativePath=".\foreach.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\math_base.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="base"
