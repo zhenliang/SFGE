@@ -1,10 +1,16 @@
 #pragma once
 
 #include "util.h"
+#include <assert.h>
 
 namespace util
 {
   #define UTIL_POW2(x) ((x)*(x))
+
+  inline bool IsPowerOfTwo(int n);
+
+  // align ±ØÐëÊÇ 2 µÄÃÝ
+  inline unsigned int RoundUp(unsigned int n, unsigned int align);
 
   template <class T1, class T2, class T3>
   inline T1 Clam(const T1& num, const T2& low, const T3& high);

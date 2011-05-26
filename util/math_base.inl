@@ -1,4 +1,16 @@
 
+inline bool IsPowerOfTwo(int n)
+{
+  return (n > 0) ? (!(n & (n - 1))) : false;
+}
+
+// align ±ØĞëÊÇ 2 µÄÃİ
+inline unsigned int RoundUp(unsigned int n, unsigned int align) 
+{
+  assert(IsPowerOfTwo(align));
+  return (n + (align - 1)) & ~(align - 1);
+}
+
 template <class T1, class T2, class T3>
 inline T1 Clam(const T1& num, const T2& low, const T3& high)
 {
