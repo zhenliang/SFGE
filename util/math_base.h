@@ -9,7 +9,7 @@ namespace util
 
   inline bool IsPowerOfTwo(int n);
 
-  // align ±ØÐëÊÇ 2 µÄÃÝ
+  // align å¿…é¡»æ˜¯ 2 çš„å¹‚
   inline unsigned int RoundUp(unsigned int n, unsigned int align);
 
   template <class T1, class T2, class T3>

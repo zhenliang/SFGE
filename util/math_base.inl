@@ -4,7 +4,7 @@ inline bool IsPowerOfTwo(int n)
   return (n > 0) ? (!(n & (n - 1))) : false;
 }
 
-// align ±ØÐëÊÇ 2 µÄÃÝ
+// align å¿…é¡»æ˜¯ 2 çš„å¹‚
 inline unsigned int RoundUp(unsigned int n, unsigned int align) 
 {
   assert(IsPowerOfTwo(align));
