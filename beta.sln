@@ -7,8 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "games", "games", "{CD28DEA7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{783E194B-E24C-461A-850E-1CE75F0790C4}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		docs\devlog.txt = docs\devlog.txt
+		LICENSE = LICENSE
 		docs\notes.txt = docs\notes.txt
+		README.md = README.md
 		docs\todos.txt = docs\todos.txt
 	EndProjectSection
 EndProject
