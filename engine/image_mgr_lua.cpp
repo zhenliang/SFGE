@@ -25,7 +25,7 @@ int GetImage(lua_State* L)
   std::string key = lua_tostring(L, 1);
 
 #if 1
-  Image** boxptr = static_cast<Image**>(lua_newuserdata(L, sizeof(Image*)));
+  Image** boxptr = static_cast<Image**>(lua_newuserdata(L, sizeof(void*)));
   *boxptr = &ImageManager::GetInstance().GetImage(key);
 #else // lua_boxpointer
   Image* image = &ImageManager::GetInstance().GetImage(key);
@@ -71,17 +71,21 @@ void LuaImage::Register(lua_State* L)
   luaL_newmetatable(L, className_);
   int metaTable = lua_gettop(L);
 
+#if 0
   lua_pushstring(L, "__metatable");
   lua_pushvalue(L, methodTable);
   lua_settable(L, metaTable);
+#endif
 
   lua_pushstring(L, "__index");
   lua_pushvalue(L, methodTable);
   lua_settable(L, metaTable);
 
+#if 0
   lua_pushstring(L, "__gc");
   lua_pushcfunction(L, LuaImage::GC);
   lua_settable(L, metaTable);
+#endif
 
   lua_pop(L, 1); // drop metatable
   luaL_register(L, NULL, LuaImage::methods_); // fill methodtable
