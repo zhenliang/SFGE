@@ -20,5 +20,5 @@ Dependices
 Notes
 ----------
 - it's a personal project for study purpose, there are no documents and code comments
-- the gui module works fine, but lack of scaling, draging and focusing functions
+- the gui module works fine, but no scaling, draging and focusing functions
 - currently for windows only
