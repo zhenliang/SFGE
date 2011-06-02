@@ -328,18 +328,6 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="ui"
-				>
-				<File
-					RelativePath=".\ui_mgr.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\ui_mgr.h"
-					>
-				</File>
-			</Filter>
-			<Filter
 				Name="sndbuf"
 				>
 				<File
@@ -512,6 +500,10 @@
 				>
 			</File>
 		</Filter>
+		<File
+			RelativePath=".\engine.cd"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

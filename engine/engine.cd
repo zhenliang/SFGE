@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="App" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAgAAA=</HashCode>
+      <FileName>app.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharsetManager" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAACAAEAAAIAAAAAQEAAAAAAAAAAAA=</HashCode>
+      <FileName>charset_mgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FontManager" Collapsed="true">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAQAAgAAQAAg=</HashCode>
+      <FileName>font_mgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ImageManager" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAIAAAAAAAQAAAAAAAAAAAAAAAIAIA=</HashCode>
+      <FileName>image_mgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputManager" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QMAAAAIAAQAABAAQAGgCAABAAICAAAAAQBAAYAQAAAA=</HashCode>
+      <FileName>input_mgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScriptManager" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgCCAABAAACAAADAAAAADAAAAAAAACAACAAII=</HashCode>
+      <FileName>script_mgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StringManager" Collapsed="true">
+    <Position X="17.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAIAAABAAAAAAAABAAABAAAAAEAAA=</HashCode>
+      <FileName>string_mgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundbufManager" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAEAAIBAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>soundbuf_mgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneManager" Collapsed="true">
+    <Position X="17.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAACAAAAAAAEAABAAAAAAABAAAAAAAABAAAAgABAQ=</HashCode>
+      <FileName>scene_mgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundManager" Collapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAEAAABoAAQAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>sound_mgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animation" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCQAAAAAABAAAAgAgAACAAAAQggIAAABgAAAAAgQE=</HashCode>
+      <FileName>animation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Object" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAAQABAAAoAoAAAAAAAAAAAAAAABAAYAEwJAA=</HashCode>
+      <FileName>object.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIButton" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICRAAEABiCABgEEgAAQAAAAAAAAAAAAAQRABEAIAAAA=</HashCode>
+      <FileName>ui_button.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UILabel" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAACMBJBAAAEGAQAAAAIBgAAAAAABA=</HashCode>
+      <FileName>ui_label.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UILine" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEEAAAIAAAAAAAAAACAECAAAACAAJgAAACAAAA=</HashCode>
+      <FileName>ui_line.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIPanel" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAEIAiAAAAAEAAAAAAAAAAACAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>ui_panel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIProgressbar" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAACAAIAEAAAhAAIAAAABAEAAAQiAAABIAAACAAAg=</HashCode>
+      <FileName>ui_progressbar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIWidget" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Typedef Name="UIWidget::CallBack" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ui_widget.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="UIWidget::Anims" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ui_widget.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="UIWidget::Widgets" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ui_widget.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>YJwMgAEEgsAAQpIJggpaiIBYFEQVUkQAEFlRYVW5JIQ=</HashCode>
+      <FileName>ui_widget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIWindow" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAABAAAAAAAAAAIAAAAAAAACAAAAAAAAAQAA=</HashCode>
+      <FileName>ui_window.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="RenderVisitor" Collapsed="true">
+    <Position X="17.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAEAAAAAAAAAABAA=</HashCode>
+      <FileName>util_vistors.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="RenderVisitor_Second" Collapsed="true">
+    <Position X="12" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAEAAABAAAAAABAA=</HashCode>
+      <FileName>util_vistors.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DrawVisitor_Second" Collapsed="true">
+    <Position X="12" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAIAAAAEAAAAAAAAAABAA=</HashCode>
+      <FileName>util_vistors.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="LuaImage" Collapsed="true">
+    <Position X="13.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAQAAAAAAAAIFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>image_mgr_lua.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::MoveFunctor_Second" Collapsed="true">
+    <Position X="15.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAA=</HashCode>
+      <FileName>ui_widget.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::SetEnabledFunctor_Second" Collapsed="true">
+    <Position X="17.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAQAAAAEA=</HashCode>
+      <FileName>ui_widget.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::SetVisibledFunctor_Second" Collapsed="true">
+    <Position X="12" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIACAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>ui_widget.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::SetAlphaFunctor_Second" Collapsed="true">
+    <Position X="13.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAQAAAAAAA=</HashCode>
+      <FileName>ui_widget.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::SetAnimAlphaFunctor_Second" Collapsed="true">
+    <Position X="15.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAQAAAAAAA=</HashCode>
+      <FileName>ui_widget.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="SimSun" Size="9" />
+</ClassDiagram>
