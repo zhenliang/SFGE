@@ -48,6 +48,7 @@ public:
   UIWidget* GetWidget(const std::string& name);
   template <class T> T* GetWidget(const std::string& name);
   Widgets& GetAllWidgets() { return widgets_; }
+  void RemoveWidget(const std::string& name);
 
   String GetTooltip() const { return tooltip_; }
   Vector2f& GetTooltipTopLeft() { return tooltipTopLeft_; }

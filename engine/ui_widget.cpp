@@ -48,14 +48,10 @@ UIWidget::UIWidget()
 
 UIWidget::~UIWidget()
 {
-  // TODO: DLL 内存空间问题
-
-#if 0
   delete onMouseEnter_;
   delete onMouseLeft_;
   delete onPressed_;
   delete onReleased_;
-#endif
 
   util::Vist(widgets_, util::DeleteVisitor_Second());
 }
@@ -377,5 +373,11 @@ void UIWidget::SetWidth( float width )
 void UIWidget::SetHeight( float height )
 {
   Vector2f widthHeight(widthHeight_.x, height); SetWidthHeight(widthHeight);
+}
+
+void UIWidget::RemoveWidget(const std::string& name)
+{
+  delete util::Get(widgets_, name);
+  util::Remove(widgets_, name);
 }
 
