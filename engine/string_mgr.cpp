@@ -53,5 +53,18 @@ bool StringManager::AddStrings(const std::string& path)
 
 String& StringManager::GetString(const std::string& key)
 {
-	return util::Get(strings_, key);
+  if (util::Contain(strings_, key))
+	  return util::Get(strings_, key);
+
+  util::Logger::GetInstance().Log("can not get sf::String " + 
+    key + ", return null sf::String instead.", util::Logger::LL_WARNING);
+  assert(false);
+
+  static String nullString;
+  return nullString;
+}
+
+bool StringManager::HasString(const std::string& key)
+{
+  return util::Contain(strings_, key);
 }

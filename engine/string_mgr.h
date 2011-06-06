@@ -15,6 +15,7 @@ public:
   bool AddString(const std::string& key, const String& value);
   bool AddStrings(const std::string& path);
   String& GetString(const std::string& key);
+  bool HasString(const std::string& key);
 
 private:
   typedef std::map<std::string, String> Strings;
