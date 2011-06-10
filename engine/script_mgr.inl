@@ -1,7 +1,8 @@
 
-void ScriptManager::DoString( const std::string& str )
+void ScriptManager::DoString(const std::string& str)
 {
-  luaL_dostring(luaState_, str.c_str());
+  if (0 != luaL_dostring(luaState_, str.c_str()))
+    util::Logger::GetInstance().Log("fail dostring" + str);
 }
 
 void ScriptManager::DoFile( const std::string& path )
